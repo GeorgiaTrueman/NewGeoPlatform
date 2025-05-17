@@ -5,72 +5,163 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NewGeoPlatform</title>
   <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
-      font-family: "Sylfaen", "DejaVu Sans", Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0; padding: 0;
+      background: #fafafa;
       color: #222;
+      line-height: 1.6;
+    }
+    a {
+      color: #1b2d5f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
     header {
-      background: #1b2d5f;
-      color: white;
-      padding: 1rem;
-      text-align: center;
+      background-color: #1b2d5f;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+    header nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0;
+    }
+    nav ul li a {
+      font-weight: 600;
+      padding: 0.3rem 0.5rem;
+      transition: background-color 0.3s ease;
+      border-radius: 4px;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+      background-color: #3952a3;
+      color: #fff;
+    }
+
     main {
-      max-width: 700px;
+      max-width: 900px;
       margin: 2rem auto;
-      padding: 0 1rem;
+      padding: 0 1.2rem;
     }
-    h1 {
-      margin-bottom: 0.2rem;
+
+    section {
+      margin-bottom: 3rem;
+      background: #fff;
+      padding: 1.8rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
     }
-    p {
-      line-height: 1.5;
+
+    section h2 {
+      color: #1b2d5f;
+      margin-top: 0;
       margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 1.6rem;
+      border-bottom: 2px solid #1b2d5f;
+      padding-bottom: 0.3rem;
     }
+
+    ul {
+      padding-left: 1.3rem;
+    }
+
+    ul li {
+      margin-bottom: 0.6rem;
+    }
+
     a.button {
       display: inline-block;
-      background: #1b2d5f;
+      background-color: #1b2d5f;
       color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 4px;
-      text-decoration: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
       margin-top: 1rem;
-      transition: background 0.3s ease;
+      font-weight: 600;
+      box-shadow: 0 3px 7px rgb(27 45 95 / 0.5);
+      transition: background-color 0.3s ease;
     }
-    a.button:hover {
-      background: #3952a3;
+    a.button:hover,
+    a.button:focus {
+      background-color: #3952a3;
+      box-shadow: 0 3px 10px rgb(57 82 163 / 0.7);
     }
+
     footer {
+      background: #e4e4e4;
       text-align: center;
-      font-size: 0.8rem;
-      padding: 1rem;
-      color: #555;
-      border-top: 1px solid #ddd;
-      margin-top: 3rem;
+      padding: 1rem 1.2rem;
+      font-size: 0.9rem;
+      color: #444;
+      border-top: 1px solid #ccc;
     }
-    ul {
-      margin-left: 1.2rem;
-    }
-    @media (max-width: 480px) {
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0.7rem;
+        align-items: center;
+      }
       main {
         margin: 1rem;
+        padding: 0 0.7rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>NewGeoPlatform</h1>
-    <p>უსაფრთხო და თავისუფალი სივრცე პროგრესული აქტივისტებისთვის</p>
+    <nav>
+      <h1>NewGeoPlatform</h1>
+      <ul>
+        <li><a href="#goal">ჩვენი მიზანი</a></li>
+        <li><a href="#tools">ინსტრუმენტები</a></li>
+        <li><a href="#resources">რესურსები</a></li>
+        <li><a href="#contact">კონტაქტი</a></li>
+      </ul>
+    </nav>
   </header>
+
   <main>
-    <section>
+    <section id="goal">
       <h2>ჩვენი მიზანი</h2>
       <p>შექმნა დეცენტრალიზებული, დაშიფრული პლატფორმა, სადაც ყველას შეეძლება თავისუფლად გაზიარება და კომუნიკაცია — ცენზურის გარეშე.</p>
     </section>
-    <section>
+
+    <section id="tools">
       <h2>ჩვენი მთავარი ინსტრუმენტები</h2>
       <ul>
         <li><strong>Matrix + Element:</strong> დეცენტრალიზებული ჩატები და ჯგუფები.</li>
@@ -78,7 +169,8 @@
         <li><strong>CryptPad:</strong> დაშიფრული დოკუმენტები და ერთობლივი სამუშაო.</li>
       </ul>
     </section>
-    <section>
+
+    <section id="resources">
       <h2>დამატებითი რესურსები</h2>
       <ul>
         <li><a href="https://matrix.org" target="_blank" rel="noopener">Matrix.org</a></li>
@@ -87,13 +179,16 @@
         <li><a href="https://cryptpad.fr" target="_blank" rel="noopener">CryptPad.fr</a></li>
       </ul>
     </section>
-    <section>
+
+    <section id="contact">
       <h2>დაგვიკავშირდით</h2>
       <p>პროექტში ჩართულობისა და მხარდაჭერისთვის მოგვწერეთ: <a href="mailto:open.democracy.hub@example.com">open.democracy.hub@example.com</a></p>
     </section>
   </main>
+
   <footer>
     <p>© 2025 NewGeoPlatform | უფასო, ღია და დამოუკიდებელი სივრცე</p>
   </footer>
 </body>
 </html>
+
