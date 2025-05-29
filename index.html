@@ -142,6 +142,7 @@
       padding: 0.7rem 1.5rem;
       border-radius: var(--border-radius);
       font-weight: 600;
+      text-decoration: none; /* Ensure buttons don't have underlines */
       transition: all 0.3s ease;
     }
 
@@ -195,6 +196,134 @@
         border: 1px solid #ddd;
       }
     }
+
+    /* --- New Styles for Functionality --- */
+
+    /* Modal Styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 2000; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
+      padding-top: 60px;
+      animation: fadeIn 0.3s forwards; /* Add fade-in animation */
+    }
+
+    .modal-content {
+      background-color: var(--white);
+      margin: 5% auto; /* 5% from the top and centered */
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      max-width: 600px;
+      position: relative;
+      animation: slideInTop 0.4s forwards; /* Add slide-in animation */
+    }
+
+    .close-button {
+      color: var(--primary-color);
+      font-size: 2.2rem;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: var(--secondary-color);
+      text-decoration: none;
+      outline: none; /* Remove outline for aesthetics, but ensure focus is visible for keyboard users elsewhere */
+    }
+
+    /* Modal Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInTop {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive adjustments for modal */
+    @media (max-width: 768px) {
+      .modal-content {
+        margin: 15% auto;
+        padding: 1.5rem;
+        max-width: 90%;
+      }
+    }
+
+    /* Accordion Styles */
+    .accordion-item {
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      overflow: hidden; /* Ensures rounded corners are respected */
+    }
+
+    .accordion-header {
+      background-color: var(--secondary-color);
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      width: 100%;
+      text-align: left;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease;
+      border-radius: var(--border-radius); /* Apply initial border-radius */
+    }
+
+    .accordion-header:hover,
+    .accordion-header:focus-visible {
+      background-color: var(--primary-color);
+      outline: 2px solid var(--white); /* For focus visibility */
+    }
+
+    .accordion-header .icon {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-header[aria-expanded="true"] .icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-panel {
+      padding: 1.5rem;
+      background-color: var(--white);
+      border-top: 1px solid #eee;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); /* Subtle inner shadow */
+    }
+
+    .accordion-panel[hidden] {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -205,7 +334,7 @@
       <h1>NewGeoPlatform</h1>
       <ul>
         <li><a href="#goal" aria-current="page">ჩვენი მიზანი</a></li>
-        <li><a href="#tools">ინსტრუმენტები</a></li>
+        <li><a href="#faq">კითხვები</a></li> <li><a href="#tools">ინსტრუმენტები</a></li>
         <li><a href="#resources">რესურსები</a></li>
         <li><a href="#contact">კონტაქტი</a></li>
       </ul>
@@ -213,17 +342,152 @@
   </header>
 
   <main id="main-content">
-    <!-- Content sections remain the same but with added aria-labels -->
     <section id="goal" aria-labelledby="goal-heading">
       <h2 id="goal-heading">ჩვენი მიზანი</h2>
       <p>შექმნა დეცენტრალიზებული, დაშიფრული პლატფორმა, სადაც ყველას შეეძლება თავისუფლად გაზიარება და კომუნიკაცია — ცენზურის გარეშე.</p>
+      <a href="#" class="button" id="openGoalModal">
+        <span class="sr-only">გაიგეთ მეტი</span>
+        დაწვრილებით
+      </a>
     </section>
 
-    <!-- Other sections follow similar pattern -->
+    <section id="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">ხშირად დასმული კითხვები</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" aria-controls="faq1-panel" id="faq1-trigger">
+            რა არის დეცენტრალიზაცია?
+            <span class="icon">▼</span>
+          </button>
+          <div class="accordion-panel" id="faq1-panel" role="region" aria-labelledby="faq1-trigger" hidden>
+            <p>დეცენტრალიზაცია ნიშნავს, რომ არ არსებობს ცენტრალური სერვერი ან ორგანო, რომელიც აკონტროლებს მონაცემებს. ინფორმაცია გადანაწილებულია მრავალ მონაწილეს შორის, რაც ზრდის უსაფრთხოებას და გამძლეობას ცენზურის მიმართ.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" aria-controls="faq2-panel" id="faq2-trigger">
+            როგორ ხდება კომუნიკაციის დაშიფვრა?
+            <span class="icon">▼</span>
+          </button>
+          <div class="accordion-panel" id="faq2-panel" role="region" aria-labelledby="faq2-trigger" hidden>
+            <p>ჩვენ ვიყენებთ ბოლო-ბოლო დაშიფრვას (end-to-end encryption), რაც იმას ნიშნავს, რომ თქვენი შეტყობინებები და მონაცემები დაშიფრულია გამგზავნიდან მიმღებამდე. მხოლოდ თქვენ და მიმღებს გაქვთ წვდომა გაშიფრულ ინფორმაციაზე.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" aria-controls="faq3-panel" id="faq3-trigger">
+            რა არის NewGeoPlatform-ის უპირატესობა?
+            <span class="icon">▼</span>
+          </button>
+          <div class="accordion-panel" id="faq3-panel" role="region" aria-labelledby="faq3-trigger" hidden>
+            <p>ჩვენი პლატფორმა უზრუნველყოფს სრულ კონფიდენციალურობას, უსაფრთხოებას და ცენზურისგან თავისუფალ კომუნიკაციას. არ არსებობს შუამავალი, რომელიც თვალყურს ადევნებს ან ინახავს თქვენს მონაცემებს.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <h2 id="tools-heading">ინსტრუმენტები</h2>
+      <p>გამოიყენეთ ჩვენი ინსტრუმენტები უსაფრთხო კომუნიკაციისთვის:</p>
+      <ul>
+        <li>დაშიფრული ჩეთი</li>
+        <li>უსაფრთხო ფაილის გაზიარება</li>
+        <li>ანონიმური დათვალიერება</li>
+      </ul>
+    </section>
+
+    <section id="resources">
+      <h2 id="resources-heading">რესურსები</h2>
+      <p>მოიძიეთ მეტი ინფორმაცია დეცენტრალიზებული ტექნოლოგიების შესახებ:</p>
+      <ul>
+        <li><a href="#">ბლოგი</a></li>
+        <li><a href="#">დოკუმენტაცია</a></li>
+        <li><a href="#">ხშირად დასმული კითხვები</a></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2 id="contact-heading">კონტაქტი</h2>
+      <p>დაგვიკავშირდით ნებისმიერი შეკითხვისთვის:</p>
+      <ul>
+        <li>ელ-ფოსტა: <a href="mailto:info@newgeoplatform.com">info@newgeoplatform.com</a></li>
+        <li>სოციალური მედია: <a href="#">Twitter</a>, <a href="#">Telegram</a></li>
+      </ul>
+    </section>
   </main>
+
+  <div id="goalDetailsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+    <div class="modal-content">
+      <span class="close-button" aria-label="დახურვა">&times;</span>
+      <h3 id="modalTitle">ჩვენი მიზანი: დეტალურად</h3>
+      <p id="modalDescription">ჩვენი მისიაა შევქმნათ ციფრული სივრცე, სადაც კომუნიკაცია და ინფორმაციის გაცვლა სრულად თავისუფალი და დაცულია ყოველგვარი ჩარევისგან. NewGeoPlatform იყენებს მოწინავე კრიპტოგრაფიულ ტექნოლოგიებს და დეცენტრალიზებულ არქიტექტურას, რათა უზრუნველყოს თქვენი მონაცემების კონფიდენციალურობა და უსაფრთხოება. ჩვენ გვჯერა, რომ ყველას აქვს უფლება გამოხატოს საკუთარი აზრები ცენზურის, თვალთვალის ან შეზღუდვების გარეშე. ჩვენი პლატფორმა შექმნილია იმისათვის, რომ ხელი შეუწყოს ღია დიალოგს და ცოდნის გაზიარებას უსაფრთხო და სანდო გარემოში.</p>
+      <p>ჩვენი ხედვა მოიცავს გლობალური ქსელის შექმნას, რომელიც აერთიანებს მომხმარებლებს საზღვრებისა და ბარიერების გარეშე, აძლევს მათ შესაძლებლობას, სრულად აკონტროლონ საკუთარი ციფრული არსებობა.</p>
+    </div>
+  </div>
 
   <footer role="contentinfo">
     <p>© 2025 NewGeoPlatform | უფასო, ღია და დამოუკიდებელი სივრცე</p>
   </footer>
+
+  <script>
+    // --- Modal Functionality ---
+    const openGoalModalBtn = document.getElementById('openGoalModal');
+    const goalDetailsModal = document.getElementById('goalDetailsModal');
+    const closeButton = goalDetailsModal.querySelector('.close-button');
+
+    openGoalModalBtn.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default link behavior
+      goalDetailsModal.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+      goalDetailsModal.focus(); // Focus on the modal for accessibility
+    });
+
+    closeButton.addEventListener('click', function() {
+      goalDetailsModal.style.display = 'none';
+      document.body.style.overflow = ''; // Restore scrolling
+      openGoalModalBtn.focus(); // Return focus to the button that opened the modal
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+      if (event.target == goalDetailsModal) {
+        goalDetailsModal.style.display = 'none';
+        document.body.style.overflow = '';
+        openGoalModalBtn.focus();
+      }
+    });
+
+    // Close modal when Escape key is pressed
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && goalDetailsModal.style.display === 'block') {
+        goalDetailsModal.style.display = 'none';
+        document.body.style.overflow = '';
+        openGoalModalBtn.focus();
+      }
+    });
+
+    // --- Accordion Functionality ---
+    document.querySelectorAll('.accordion-header').forEach(button => {
+      button.addEventListener('click', () => {
+        const accordionItem = button.closest('.accordion-item');
+        const accordionPanel = accordionItem.querySelector('.accordion-panel');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        // Close all other open panels in the same accordion group
+        document.querySelectorAll('.accordion-panel').forEach(panel => {
+          if (panel !== accordionPanel && !panel.hidden) {
+            panel.hidden = true;
+            panel.previousElementSibling.setAttribute('aria-expanded', 'false');
+            panel.previousElementSibling.querySelector('.icon').textContent = '▼';
+          }
+        });
+
+        // Toggle the clicked panel
+        button.setAttribute('aria-expanded', !isExpanded);
+        accordionPanel.hidden = isExpanded;
+        button.querySelector('.icon').textContent = isExpanded ? '▼' : '▲'; // Change icon
+      });
+    });
+  </script>
 </body>
 </html>
