@@ -324,6 +324,37 @@
     .accordion-panel[hidden] {
       display: none;
     }
+
+    /* Language Selector Styles */
+    .language-selector {
+      display: flex;
+      gap: 0.5rem;
+      margin-left: auto; /* Push to the right */
+    }
+
+    .lang-button {
+      background-color: var(--secondary-color);
+      color: var(--white);
+      border: 1px solid var(--white);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .lang-button:hover,
+    .lang-button:focus-visible {
+      background-color: var(--primary-color);
+      border-color: var(--white);
+      outline: 2px solid var(--white);
+    }
+
+    .lang-button.active {
+      background-color: var(--primary-color);
+      border-color: var(--white);
+      cursor: default;
+    }
   </style>
 </head>
 <body>
@@ -331,87 +362,94 @@
   
   <header>
     <nav aria-label="მთავარი ნავიგაცია">
-      <h1>NewGeoPlatform</h1>
-      <ul>
-        <li><a href="#goal" aria-current="page">ჩვენი მიზანი</a></li>
-        <li><a href="#faq">კითხვები</a></li> <li><a href="#tools">ინსტრუმენტები</a></li>
-        <li><a href="#resources">რესურსები</a></li>
-        <li><a href="#contact">კონტაქტი</a></li>
+      <h1 data-key="siteTitle">NewGeoPlatform</h1>
+      <ul role="menubar">
+        <li role="none"><a href="#goal" aria-current="page" data-key="navGoal" role="menuitem">ჩვენი მიზანი</a></li>
+        <li role="none"><a href="#faq" data-key="navFaq" role="menuitem">კითხვები</a></li>
+        <li role="none"><a href="#tools" data-key="navTools" role="menuitem">ინსტრუმენტები</a></li>
+        <li role="none"><a href="#resources" data-key="navResources" role="menuitem">რესურსები</a></li>
+        <li role="none"><a href="#contact" data-key="navContact" role="menuitem">კონტაქტი</a></li>
       </ul>
+      <div class="language-selector">
+        <button class="lang-button" data-lang="ka">KA</button>
+        <button class="lang-button" data-lang="en">EN</button>
+        <button class="lang-button" data-lang="de">DE</button>
+        <button class="lang-button" data-lang="ja">JA</button>
+      </div>
     </nav>
   </header>
 
   <main id="main-content">
     <section id="goal" aria-labelledby="goal-heading">
-      <h2 id="goal-heading">ჩვენი მიზანი</h2>
-      <p>შექმნა დეცენტრალიზებული, დაშიფრული პლატფორმა, სადაც ყველას შეეძლება თავისუფლად გაზიარება და კომუნიკაცია — ცენზურის გარეშე.</p>
-      <a href="#" class="button" id="openGoalModal">
-        <span class="sr-only">გაიგეთ მეტი</span>
+      <h2 id="goal-heading" data-key="goalHeading">ჩვენი მიზანი</h2>
+      <p data-key="goalText">შექმნა დეცენტრალიზებული, დაშიფრული პლატფორმა, სადაც ყველას შეეძლება თავისუფლად გაზიარება და კომუნიკაცია — ცენზურის გარეშე.</p>
+      <a href="#" class="button" id="openGoalModal" data-key="learnMoreButton">
+        <span class="sr-only" data-key="learnMoreSrOnly">გაიგეთ მეტი</span>
         დაწვრილებით
       </a>
     </section>
 
     <section id="faq" aria-labelledby="faq-heading">
-      <h2 id="faq-heading">ხშირად დასმული კითხვები</h2>
+      <h2 id="faq-heading" data-key="faqHeading">ხშირად დასმული კითხვები</h2>
       <div class="accordion">
         <div class="accordion-item">
           <button class="accordion-header" aria-expanded="false" aria-controls="faq1-panel" id="faq1-trigger">
-            რა არის დეცენტრალიზაცია?
+            <span data-key="faq1Q">რა არის დეცენტრალიზაცია?</span>
             <span class="icon">▼</span>
           </button>
           <div class="accordion-panel" id="faq1-panel" role="region" aria-labelledby="faq1-trigger" hidden>
-            <p>დეცენტრალიზაცია ნიშნავს, რომ არ არსებობს ცენტრალური სერვერი ან ორგანო, რომელიც აკონტროლებს მონაცემებს. ინფორმაცია გადანაწილებულია მრავალ მონაწილეს შორის, რაც ზრდის უსაფრთხოებას და გამძლეობას ცენზურის მიმართ.</p>
+            <p data-key="faq1A">დეცენტრალიზაცია ნიშნავს, რომ არ არსებობს ცენტრალური სერვერი ან ორგანო, რომელიც აკონტროლებს მონაცემებს. ინფორმაცია გადანაწილებულია მრავალ მონაწილეს შორის, რაც ზრდის უსაფრთხოებას და გამძლეობას ცენზურის მიმართ.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-header" aria-expanded="false" aria-controls="faq2-panel" id="faq2-trigger">
-            როგორ ხდება კომუნიკაციის დაშიფვრა?
+            <span data-key="faq2Q">როგორ ხდება კომუნიკაციის დაშიფვრა?</span>
             <span class="icon">▼</span>
           </button>
           <div class="accordion-panel" id="faq2-panel" role="region" aria-labelledby="faq2-trigger" hidden>
-            <p>ჩვენ ვიყენებთ ბოლო-ბოლო დაშიფრვას (end-to-end encryption), რაც იმას ნიშნავს, რომ თქვენი შეტყობინებები და მონაცემები დაშიფრულია გამგზავნიდან მიმღებამდე. მხოლოდ თქვენ და მიმღებს გაქვთ წვდომა გაშიფრულ ინფორმაციაზე.</p>
+            <p data-key="faq2A">ჩვენ ვიყენებთ ბოლო-ბოლო დაშიფრვას (end-to-end encryption), რაც იმას ნიშნავს, რომ თქვენი შეტყობინებები და მონაცემები დაშიფრულია გამგზავნიდან მიმღებამდე. მხოლოდ თქვენ და მიმღებს გაქვთ წვდომა გაშიფრულ ინფორმაციაზე.</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <button class="accordion-header" aria-expanded="false" aria-controls="faq3-panel" id="faq3-trigger">
-            რა არის NewGeoPlatform-ის უპირატესობა?
+            <span data-key="faq3Q">რა არის NewGeoPlatform-ის უპირატესობა?</span>
             <span class="icon">▼</span>
           </button>
           <div class="accordion-panel" id="faq3-panel" role="region" aria-labelledby="faq3-trigger" hidden>
-            <p>ჩვენი პლატფორმა უზრუნველყოფს სრულ კონფიდენციალურობას, უსაფრთხოებას და ცენზურისგან თავისუფალ კომუნიკაციას. არ არსებობს შუამავალი, რომელიც თვალყურს ადევნებს ან ინახავს თქვენს მონაცემებს.</p>
+            <p data-key="faq3A">ჩვენი პლატფორმა უზრუნველყოფს სრულ კონფიდენციალურობას, უსაფრთხოებას და ცენზურისგან თავისუფალ კომუნიკაციას. არ არსებობს შუამავალი, რომელიც თვალყურს ადევნებს ან ინახავს თქვენს მონაცემებს.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section id="tools">
-      <h2 id="tools-heading">ინსტრუმენტები</h2>
-      <p>გამოიყენეთ ჩვენი ინსტრუმენტები უსაფრთხო კომუნიკაციისთვის:</p>
+      <h2 id="tools-heading" data-key="toolsHeading">ინსტრუმენტები</h2>
+      <p data-key="toolsText">გამოიყენეთ ჩვენი ინსტრუმენტები უსაფრთხო კომუნიკაციისთვის:</p>
       <ul>
-        <li>დაშიფრული ჩეთი</li>
-        <li>უსაფრთხო ფაილის გაზიარება</li>
-        <li>ანონიმური დათვალიერება</li>
+        <li><span data-key="tool1">დაშიფრული ჩეთი</span></li>
+        <li><span data-key="tool2">უსაფრთხო ფაილის გაზიარება</span></li>
+        <li><span data-key="tool3">ანონიმური დათვალიერება</span></li>
       </ul>
     </section>
 
     <section id="resources">
-      <h2 id="resources-heading">რესურსები</h2>
-      <p>მოიძიეთ მეტი ინფორმაცია დეცენტრალიზებული ტექნოლოგიების შესახებ:</p>
+      <h2 id="resources-heading" data-key="resourcesHeading">რესურსები</h2>
+      <p data-key="resourcesText">მოიძიეთ მეტი ინფორმაცია დეცენტრალიზებული ტექნოლოგიების შესახებ:</p>
       <ul>
-        <li><a href="#">ბლოგი</a></li>
-        <li><a href="#">დოკუმენტაცია</a></li>
-        <li><a href="#">ხშირად დასმული კითხვები</a></li>
+        <li><a href="#" data-key="resource1">ბლოგი</a></li>
+        <li><a href="#" data-key="resource2">დოკუმენტაცია</a></li>
+        <li><a href="#" data-key="resource3">ხშირად დასმული კითხვები</a></li>
       </ul>
     </section>
 
     <section id="contact">
-      <h2 id="contact-heading">კონტაქტი</h2>
-      <p>დაგვიკავშირდით ნებისმიერი შეკითხვისთვის:</p>
+      <h2 id="contact-heading" data-key="contactHeading">კონტაქტი</h2>
+      <p data-key="contactText">დაგვიკავშირდით ნებისმიერი შეკითხვისთვის:</p>
       <ul>
-        <li>ელ-ფოსტა: <a href="mailto:info@newgeoplatform.com">info@newgeoplatform.com</a></li>
-        <li>სოციალური მედია: <a href="#">Twitter</a>, <a href="#">Telegram</a></li>
+        <li><span data-key="contactEmail">ელ-ფოსტა:</span> <a href="mailto:info@newgeoplatform.com">info@newgeoplatform.com</a></li>
+        <li><span data-key="contactSocial">სოციალური მედია:</span> <a href="#">Twitter</a>, <a href="#">Telegram</a></li>
       </ul>
     </section>
   </main>
@@ -419,17 +457,224 @@
   <div id="goalDetailsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
     <div class="modal-content">
       <span class="close-button" aria-label="დახურვა">&times;</span>
-      <h3 id="modalTitle">ჩვენი მიზანი: დეტალურად</h3>
-      <p id="modalDescription">ჩვენი მისიაა შევქმნათ ციფრული სივრცე, სადაც კომუნიკაცია და ინფორმაციის გაცვლა სრულად თავისუფალი და დაცულია ყოველგვარი ჩარევისგან. NewGeoPlatform იყენებს მოწინავე კრიპტოგრაფიულ ტექნოლოგიებს და დეცენტრალიზებულ არქიტექტურას, რათა უზრუნველყოს თქვენი მონაცემების კონფიდენციალურობა და უსაფრთხოება. ჩვენ გვჯერა, რომ ყველას აქვს უფლება გამოხატოს საკუთარი აზრები ცენზურის, თვალთვალის ან შეზღუდვების გარეშე. ჩვენი პლატფორმა შექმნილია იმისათვის, რომ ხელი შეუწყოს ღია დიალოგს და ცოდნის გაზიარებას უსაფრთხო და სანდო გარემოში.</p>
-      <p>ჩვენი ხედვა მოიცავს გლობალური ქსელის შექმნას, რომელიც აერთიანებს მომხმარებლებს საზღვრებისა და ბარიერების გარეშე, აძლევს მათ შესაძლებლობას, სრულად აკონტროლონ საკუთარი ციფრული არსებობა.</p>
+      <h3 id="modalTitle" data-key="modalTitle">ჩვენი მიზანი: დეტალურად</h3>
+      <p id="modalDescription" data-key="modalDescription1">ჩვენი მისიაა შევქმნათ ციფრული სივრცე, სადაც კომუნიკაცია და ინფორმაციის გაცვლა სრულად თავისუფალი და დაცულია ყოველგვარი ჩარევისგან. NewGeoPlatform იყენებს მოწინავე კრიპტოგრაფიულ ტექნოლოგიებს და დეცენტრალიზებულ არქიტექტურას, რათით უზრუნველყოს თქვენი მონაცემების კონფიდენციალურობა და უსაფრთხოება. ჩვენ გვჯერა, რომ ყველას აქვს უფლება გამოხატოს საკუთარი აზრები ცენზურის, თვალთვალის ან შეზღუდვების გარეშე. ჩვენი პლატფორმა შექმნილია იმისათვის, რომ ხელი შეუწყოს ღია დიალოგს და ცოდნის გაზიარებას უსაფრთხო და სანდო გარემოში.</p>
+      <p data-key="modalDescription2">ჩვენი ხედვა მოიცავს გლობალური ქსელის შექმნას, რომელიც აერთიანებს მომხმარებლებს საზღვრებისა და ბარიერების გარეშე, აძლევს მათ შესაძლებლობას, სრულად აკონტროლონ საკუთარი ციფრული არსებობა.</p>
     </div>
   </div>
 
   <footer role="contentinfo">
-    <p>© 2025 NewGeoPlatform | უფასო, ღია და დამოუკიდებელი სივრცე</p>
+    <p><span data-key="footerText">© 2025 NewGeoPlatform | უფასო, ღია და დამოუკიდებელი სივრცე</span></p>
   </footer>
 
   <script>
+    // --- Language Data ---
+    const translations = {
+      ka: {
+        siteTitle: "NewGeoPlatform",
+        navGoal: "ჩვენი მიზანი",
+        navFaq: "კითხვები",
+        navTools: "ინსტრუმენტები",
+        navResources: "რესურსები",
+        navContact: "კონტაქტი",
+        goalHeading: "ჩვენი მიზანი",
+        goalText: "შექმნა დეცენტრალიზებული, დაშიფრული პლატფორმა, სადაც ყველას შეეძლება თავისუფლად გაზიარება და კომუნიკაცია — ცენზურის გარეშე.",
+        learnMoreButton: "დაწვრილებით",
+        learnMoreSrOnly: "გაიგეთ მეტი",
+        faqHeading: "ხშირად დასმული კითხვები",
+        faq1Q: "რა არის დეცენტრალიზაცია?",
+        faq1A: "დეცენტრალიზაცია ნიშნავს, რომ არ არსებობს ცენტრალური სერვერი ან ორგანო, რომელიც აკონტროლებს მონაცემებს. ინფორმაცია გადანაწილებულია მრავალ მონაწილეს შორის, რაც ზრდის უსაფრთხოებას და გამძლეობას ცენზურის მიმართ.",
+        faq2Q: "როგორ ხდება კომუნიკაციის დაშიფვრა?",
+        faq2A: "ჩვენ ვიყენებთ ბოლო-ბოლო დაშიფრვას (end-to-end encryption), რაც იმას ნიშნავს, რომ თქვენი შეტყობინებები და მონაცემები დაშიფრულია გამგზავნიდან მიმღებამდე. მხოლოდ თქვენ და მიმღებს გაქვთ წვდომა გაშიფრულ ინფორმაციაზე.",
+        faq3Q: "რა არის NewGeoPlatform-ის უპირატესობა?",
+        faq3A: "ჩვენი პლატფორმა უზრუნველყოფს სრულ კონფიდენციალურობას, უსაფრთხოებას და ცენზურისგან თავისუფალ კომუნიკაციას. არ არსებობს შუამავალი, რომელიც თვალყურს ადევნებს ან ინახავს თქვენს მონაცემებს.",
+        toolsHeading: "ინსტრუმენტები",
+        toolsText: "გამოიყენეთ ჩვენი ინსტრუმენტები უსაფრთხო კომუნიკაციისთვის:",
+        tool1: "დაშიფრული ჩეთი",
+        tool2: "უსაფრთხო ფაილის გაზიარება",
+        tool3: "ანონიმური დათვალიერება",
+        resourcesHeading: "რესურსები",
+        resourcesText: "მოიძიეთ მეტი ინფორმაცია დეცენტრალიზებული ტექნოლოგიების შესახებ:",
+        resource1: "ბლოგი",
+        resource2: "დოკუმენტაცია",
+        resource3: "ხშირად დასმული კითხვები",
+        contactHeading: "კონტაქტი",
+        contactText: "დაგვიკავშირდით ნებისმიერი შეკითხვისთვის:",
+        contactEmail: "ელ-ფოსტა:",
+        contactSocial: "სოციალური მედია:",
+        modalTitle: "ჩვენი მიზანი: დეტალურად",
+        modalDescription1: "ჩვენი მისიაა შევქმნათ ციფრული სივრცე, სადაც კომუნიკაცია და ინფორმაციის გაცვლა სრულად თავისუფალი და დაცულია ყოველგვარი ჩარევისგან. NewGeoPlatform იყენებს მოწინავე კრიპტოგრაფიულ ტექნოლოგიებს და დეცენტრალიზებულ არქიტექტურას, რათა უზრუნველყოს თქვენი მონაცემების კონფიდენციალურობა და უსაფრთხოება. ჩვენ გვჯერა, რომ ყველას აქვს უფლება გამოხატოს საკუთარი აზრები ცენზურის, თვალთვალის ან შეზღუდვების გარეშე. ჩვენი პლატფორმა შექმნილია იმისათვის, რომ ხელი შეუწყოს ღია დიალოგს და ცოდნის გაზიარებას უსაფრთხო და სანდო გარემოში.",
+        modalDescription2: "ჩვენი ხედვა მოიცავს გლობალური ქსელის შექმნას, რომელიც აერთიანებს მომხმარებლებს საზღვრებისა და ბარიერების გარეშე, აძლევს მათ შესაძლებლობას, სრულად აკონტროლონ საკუთარი ციფრული არსებობა.",
+        footerText: "© 2025 NewGeoPlatform | უფასო, ღია და დამოუკიდებელი სივრცე",
+        closeModalAriaLabel: "დახურვა"
+      },
+      en: {
+        siteTitle: "NewGeoPlatform",
+        navGoal: "Our Goal",
+        navFaq: "FAQ",
+        navTools: "Tools",
+        navResources: "Resources",
+        navContact: "Contact",
+        goalHeading: "Our Goal",
+        goalText: "To create a decentralized, encrypted platform where everyone can freely share and communicate — without censorship.",
+        learnMoreButton: "Learn More",
+        learnMoreSrOnly: "Learn more about our goal",
+        faqHeading: "Frequently Asked Questions",
+        faq1Q: "What is decentralization?",
+        faq1A: "Decentralization means there is no central server or authority controlling the data. Information is distributed among multiple participants, increasing security and resilience against censorship.",
+        faq2Q: "How is communication encrypted?",
+        faq2A: "We use end-to-end encryption, which means your messages and data are encrypted from sender to receiver. Only you and the recipient have access to the decrypted information.",
+        faq3Q: "What are the advantages of NewGeoPlatform?",
+        faq3A: "Our platform ensures complete confidentiality, security, and censorship-free communication. There is no intermediary tracking or storing your data.",
+        toolsHeading: "Tools",
+        toolsText: "Use our tools for secure communication:",
+        tool1: "Encrypted Chat",
+        tool2: "Secure File Sharing",
+        tool3: "Anonymous Browse",
+        resourcesHeading: "Resources",
+        resourcesText: "Find more information about decentralized technologies:",
+        resource1: "Blog",
+        resource2: "Documentation",
+        resource3: "FAQ",
+        contactHeading: "Contact",
+        contactText: "Contact us for any questions:",
+        contactEmail: "Email:",
+        contactSocial: "Social Media:",
+        modalTitle: "Our Goal: In Detail",
+        modalDescription1: "Our mission is to create a digital space where communication and information exchange are completely free and protected from any interference. NewGeoPlatform utilizes advanced cryptographic technologies and decentralized architecture to ensure the confidentiality and security of your data. We believe everyone has the right to express their thoughts without censorship, surveillance, or restrictions. Our platform is designed to foster open dialogue and knowledge sharing in a safe and reliable environment.",
+        modalDescription2: "Our vision includes building a global network that connects users without borders or barriers, empowering them to fully control their digital presence.",
+        footerText: "© 2025 NewGeoPlatform | Free, Open, and Independent Space",
+        closeModalAriaLabel: "Close"
+      },
+      de: {
+        siteTitle: "NewGeoPlatform",
+        navGoal: "Unser Ziel",
+        navFaq: "FAQ",
+        navTools: "Werkzeuge",
+        navResources: "Ressourcen",
+        navContact: "Kontakt",
+        goalHeading: "Unser Ziel",
+        goalText: "Eine dezentrale, verschlüsselte Plattform schaffen, auf der jeder frei kommunizieren und teilen kann — ohne Zensur.",
+        learnMoreButton: "Mehr erfahren",
+        learnMoreSrOnly: "Mehr über unser Ziel erfahren",
+        faqHeading: "Häufig gestellte Fragen",
+        faq1Q: "Was ist Dezentralisierung?",
+        faq1A: "Dezentralisierung bedeutet, dass es keinen zentralen Server oder keine zentrale Behörde gibt, die die Daten kontrolliert. Informationen werden auf mehrere Teilnehmer verteilt, was die Sicherheit und Widerstandsfähigkeit gegen Zensur erhöht.",
+        faq2Q: "Wie wird die Kommunikation verschlüsselt?",
+        faq2A: "Wir verwenden Ende-zu-Ende-Verschlüsselung, was bedeutet, dass Ihre Nachrichten und Daten vom Absender zum Empfänger verschlüsselt werden. Nur Sie und der Empfänger haben Zugriff auf die entschlüsselten Informationen.",
+        faq3Q: "Was sind die Vorteile von NewGeoPlatform?",
+        faq3A: "Unsere Plattform gewährleistet vollständige Vertraulichkeit, Sicherheit und zensurfreie Kommunikation. Es gibt keinen Vermittler, der Ihre Daten verfolgt oder speichert.",
+        toolsHeading: "Werkzeuge",
+        toolsText: "Nutzen Sie unsere Werkzeuge für sichere Kommunikation:",
+        tool1: "Verschlüsselter Chat",
+        tool2: "Sichere Dateifreigabe",
+        tool3: "Anonymes Surfen",
+        resourcesHeading: "Ressourcen",
+        resourcesText: "Weitere Informationen zu dezentralen Technologien finden Sie hier:",
+        resource1: "Blog",
+        resource2: "Dokumentation",
+        resource3: "FAQ",
+        contactHeading: "Kontakt",
+        contactText: "Kontaktieren Sie uns bei Fragen:",
+        contactEmail: "E-Mail:",
+        contactSocial: "Soziale Medien:",
+        modalTitle: "Unser Ziel: Im Detail",
+        modalDescription1: "Unsere Mission ist es, einen digitalen Raum zu schaffen, in dem Kommunikation und Informationsaustausch völlig frei und vor jeglicher Einmischung geschützt sind. NewGeoPlatform nutzt fortschrittliche kryptografische Technologien und dezentrale Architektur, um die Vertraulichkeit und Sicherheit Ihrer Daten zu gewährleisten. Wir glauben, dass jeder das Recht hat, seine Gedanken ohne Zensur, Überwachung oder Einschränkungen auszudrücken. Unsere Plattform wurde entwickelt, um einen offenen Dialog und den Wissensaustausch in einer sicheren und zuverlässigen Umgebung zu fördern.",
+        modalDescription2: "Unsere Vision umfasst den Aufbau eines globalen Netzwerks, das Benutzer grenzenlos verbindet und ihnen die Möglichkeit gibt, ihre digitale Präsenz vollständig zu kontrollieren.",
+        footerText: "© 2025 NewGeoPlatform | Kostenloser, offener und unabhängiger Raum",
+        closeModalAriaLabel: "Schließen"
+      },
+      ja: {
+        siteTitle: "NewGeoPlatform",
+        navGoal: "私たちの目標",
+        navFaq: "よくある質問",
+        navTools: "ツール",
+        navResources: "リソース",
+        navContact: "お問い合わせ",
+        goalHeading: "私たちの目標",
+        goalText: "誰もが自由に共有し、検閲なしにコミュニケーションできる分散型で暗号化されたプラットフォームを作成すること。",
+        learnMoreButton: "もっと詳しく",
+        learnMoreSrOnly: "私たちの目標についてもっと詳しく知る",
+        faqHeading: "よくある質問",
+        faq1Q: "分散化とは何ですか？",
+        faq1A: "分散化とは、データを管理する中央サーバーや機関が存在しないことを意味します。情報は複数の参加者に分散され、セキュリティと検閲に対する耐性が向上します。",
+        faq2Q: "通信はどのように暗号化されますか？",
+        faq2A: "私たちはエンドツーエンド暗号化を使用しています。これは、あなたのメッセージとデータが送信者から受信者まで暗号化されることを意味します。あなたと受信者だけが復号化された情報にアクセスできます。",
+        faq3Q: "NewGeoPlatformの利点は何ですか？",
+        faq3A: "当社のプラットフォームは、完全な機密性、セキュリティ、および検閲のない通信を保証します。あなたのデータを追跡または保存する仲介者は存在しません。",
+        toolsHeading: "ツール",
+        toolsText: "安全な通信のために当社のツールを使用してください：",
+        tool1: "暗号化チャット",
+        tool2: "安全なファイル共有",
+        tool3: "匿名ブラウジング",
+        resourcesHeading: "リソース",
+        resourcesText: "分散型テクノロジーに関する詳細情報を見つける：",
+        resource1: "ブログ",
+        resource2: "ドキュメンテーション",
+        resource3: "よくある質問",
+        contactHeading: "お問い合わせ",
+        contactText: "ご不明な点がございましたらお問い合わせください：",
+        contactEmail: "メールアドレス：",
+        contactSocial: "ソーシャルメディア：",
+        modalTitle: "私たちの目標：詳細",
+        modalDescription1: "私たちの使命は、コミュニケーションと情報交換が完全に自由で、いかなる干渉からも保護されるデジタル空間を創造することです。NewGeoPlatformは、高度な暗号技術と分散型アーキテクチャを利用して、データの機密性とセキュリティを確保します。私たちは、誰もが検閲、監視、制限なしに自分の考えを表現する権利があると信じています。私たちのプラットフォームは、安全で信頼できる環境でオープンな対話と知識共有を促進するように設計されています。",
+        modalDescription2: "私たちのビジョンには、国境や障壁なしにユーザーを接続し、デジタルプレゼンスを完全に制御できるようにするグローバルネットワークの構築が含まれます。",
+        footerText: "© 2025 NewGeoPlatform | 無料、オープン、独立した空間",
+        closeModalAriaLabel: "閉じる"
+      }
+    };
+
+    // --- Language Switcher Functionality ---
+    const languageButtons = document.querySelectorAll('.lang-button');
+    const htmlElement = document.querySelector('html');
+
+    function setLanguage(lang) {
+      // Update HTML lang attribute and direction
+      htmlElement.lang = lang;
+      htmlElement.dir = (lang === 'ja') ? 'ltr' : 'ltr'; // Japanese is typically LTR, but specify if needed
+
+      // Update all elements with a data-key attribute
+      document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+          // Special handling for aria-label on close button
+          if (element.id === 'closeModalAriaLabel' && lang === 'en') { // Corrected ID to target aria-label
+             element.setAttribute('aria-label', translations[lang].closeModalAriaLabel);
+          }
+        }
+      });
+
+      // Update the title dynamically
+      document.title = translations[lang].siteTitle + " - " + translations[lang].navGoal;
+
+      // Update active button styling
+      languageButtons.forEach(button => {
+        if (button.dataset.lang === lang) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+
+      // Store preference in localStorage
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Event listeners for language buttons
+    languageButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        setLanguage(button.dataset.lang);
+      });
+    });
+
+    // On page load, set the language from localStorage or default to Georgian
+    document.addEventListener('DOMContentLoaded', () => {
+      const storedLang = localStorage.getItem('preferredLanguage');
+      setLanguage(storedLang || 'ka'); // Default to Georgian
+    });
+
+
     // --- Modal Functionality ---
     const openGoalModalBtn = document.getElementById('openGoalModal');
     const goalDetailsModal = document.getElementById('goalDetailsModal');
@@ -439,7 +684,7 @@
       event.preventDefault(); // Prevent default link behavior
       goalDetailsModal.style.display = 'block';
       document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-      goalDetailsModal.focus(); // Focus on the modal for accessibility
+      closeButton.focus(); // Focus on the close button when modal opens for accessibility
     });
 
     closeButton.addEventListener('click', function() {
