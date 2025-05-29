@@ -99,6 +99,13 @@
       outline: 2px solid var(--white);
     }
 
+    /* Logo Styling */
+    .logo-container img {
+      max-height: 50px; /* Adjust as needed */
+      vertical-align: middle;
+      display: block; /* Remove extra space below image */
+    }
+
     /* Main content */
     main {
       flex: 1;
@@ -160,6 +167,18 @@
       margin-top: auto;
     }
 
+    /* Advertisement Containers */
+    .ad-container {
+      text-align: center;
+      margin: 2rem auto; /* Adjust margin as needed */
+      padding: 1rem;
+      background-color: #f0f0f0;
+      border: 1px dashed #ccc;
+      border-radius: var(--border-radius);
+      max-width: 728px; /* Typical banner width */
+      overflow: hidden; /* Prevent content from overflowing */
+    }
+
     /* Responsive design */
     @media (max-width: 768px) {
       :root {
@@ -183,11 +202,16 @@
       section {
         padding: 1.2rem;
       }
+
+      .ad-container {
+        margin: 1rem auto; /* Smaller margin on mobile */
+        max-width: 320px; /* Smaller banner width on mobile */
+      }
     }
 
     /* Print styles */
     @media print {
-      nav, footer {
+      nav, footer, .ad-container {
         display: none;
       }
 
@@ -359,10 +383,14 @@
 </head>
 <body>
   <a href="#main-content" class="sr-only">Skip to main content</a>
-  
+
   <header>
     <nav aria-label="მთავარი ნავიგაცია">
-      <h1 data-key="siteTitle">NewGeoPlatform</h1>
+      <div class="logo-container">
+        <a href="/" aria-label="NewGeoPlatform Homepage">
+          <img src="http://googleusercontent.com/image_generation_content/0" alt="NewGeoPlatform Logo">
+        </a>
+      </div>
       <ul role="menubar">
         <li role="none"><a href="#goal" aria-current="page" data-key="navGoal" role="menuitem">ჩვენი მიზანი</a></li>
         <li role="none"><a href="#faq" data-key="navFaq" role="menuitem">კითხვები</a></li>
@@ -379,6 +407,11 @@
     </nav>
   </header>
 
+  <div class="ad-container" id="ad-banner-top" style="margin-top: 2rem;">
+      <p>Advertiser Banner (728x90) - Replace with actual ad code</p>
+      <img src="https://via.placeholder.com/728x90.png?text=Your+Top+Ad+Here" alt="Top Advertisement" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+  </div>
+
   <main id="main-content">
     <section id="goal" aria-labelledby="goal-heading">
       <h2 id="goal-heading" data-key="goalHeading">ჩვენი მიზანი</h2>
@@ -388,6 +421,11 @@
         დაწვრილებით
       </a>
     </section>
+
+    <div class="ad-container" id="ad-content-1">
+        <p>Advertiser Content Ad (300x250) - Replace with actual ad code</p>
+        <img src="https://via.placeholder.com/300x250.png?text=Your+Content+Ad+Here" alt="Content Advertisement" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+    </div>
 
     <section id="faq" aria-labelledby="faq-heading">
       <h2 id="faq-heading" data-key="faqHeading">ხშირად დასმული კითხვები</h2>
@@ -465,6 +503,10 @@
 
   <footer role="contentinfo">
     <p><span data-key="footerText">© 2025 NewGeoPlatform | უფასო, ღია და დამოუკიდებელი სივრცე</span></p>
+    <div class="ad-container" id="ad-footer" style="margin-top: 1rem;">
+        <p>Advertiser Footer Ad (468x60) - Replace with actual ad code</p>
+        <img src="https://via.placeholder.com/468x60.png?text=Your+Footer+Ad+Here" alt="Footer Advertisement" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+    </div>
   </footer>
 
   <script>
@@ -503,7 +545,7 @@
         contactEmail: "ელ-ფოსტა:",
         contactSocial: "სოციალური მედია:",
         modalTitle: "ჩვენი მიზანი: დეტალურად",
-        modalDescription1: "ჩვენი მისიაა შევქმნათ ციფრული სივრცე, სადაც კომუნიკაცია და ინფორმაციის გაცვლა სრულად თავისუფალი და დაცულია ყოველგვარი ჩარევისგან. NewGeoPlatform იყენებს მოწინავე კრიპტოგრაფიულ ტექნოლოგიებს და დეცენტრალიზებულ არქიტექტურას, რათა უზრუნველყოს თქვენი მონაცემების კონფიდენციალურობა და უსაფრთხოება. ჩვენ გვჯერა, რომ ყველას აქვს უფლება გამოხატოს საკუთარი აზრები ცენზურის, თვალთვალის ან შეზღუდვების გარეშე. ჩვენი პლატფორმა შექმნილია იმისათვის, რომ ხელი შეუწყოს ღია დიალოგს და ცოდნის გაზიარებას უსაფრთხო და სანდო გარემოში.",
+        modalDescription1: "ჩვენი მისიაა შევქმნათ ციფრული სივრცე, სადაც კომუნიკაცია და ინფორმაციის გაცვლა სრულად თავისუფალი და დაცულია ყოველგვარი ჩარევისგან. NewGeoPlatform იყენებს მოწინავე კრიპტოგრაფიულ ტექნოლოგიებს და დეცენტრალიზებულ არქიტექტურას, რათით უზრუნველყოს თქვენი მონაცემების კონფიდენციალურობა და უსაფრთხოება. ჩვენ გვჯერა, რომ ყველას აქვს უფლება გამოხატოს საკუთარი აზრები ცენზურის, თვალთვალის ან შეზღუდვების გარეშე. ჩვენი პლატფორმა შექმნილია იმისათვის, რომ ხელი შეუწყოს ღია დიალოგს და ცოდნის გაზიარებას უსაფრთხო და სანდო გარემოში.",
         modalDescription2: "ჩვენი ხედვა მოიცავს გლობალური ქსელის შექმნას, რომელიც აერთიანებს მომხმარებლებს საზღვრებისა და ბარიერების გარეშე, აძლევს მათ შესაძლებლობას, სრულად აკონტროლონ საკუთარი ციფრული არსებობა.",
         footerText: "© 2025 NewGeoPlatform | უფასო, ღია და დამოუკიდებელი სივრცე",
         closeModalAriaLabel: "დახურვა"
@@ -640,7 +682,7 @@
           element.textContent = translations[lang][key];
           // Special handling for aria-label on close button
           if (element.id === 'closeModalAriaLabel' && lang === 'en') { // Corrected ID to target aria-label
-             element.setAttribute('aria-label', translations[lang].closeModalAriaLabel);
+            element.setAttribute('aria-label', translations[lang].closeModalAriaLabel);
           }
         }
       });
