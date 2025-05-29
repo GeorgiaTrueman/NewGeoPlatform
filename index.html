@@ -16,12 +16,15 @@
     :root {
       --primary-color: #1b2d5f;
       --secondary-color: #3952a3;
+      --accent-color: #00bcd4; /* New accent color for highlights */
       --background-color: #fafafa;
       --text-color: #222;
+      --light-text-color: #555;
       --white: #ffffff;
       --spacing-unit: 1rem;
       --border-radius: 8px;
-      --shadow: 0 2px 5px rgba(0,0,0,0.1);
+      --shadow: 0 4px 10px rgba(0,0,0,0.1); /* Slightly deeper shadow */
+      --transition-speed: 0.3s;
     }
 
     /* Reset and base styles */
@@ -39,6 +42,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      font-size: 16px; /* Base font size */
     }
 
     /* Accessibility improvements */
@@ -74,9 +78,16 @@
       gap: var(--spacing-unit);
     }
 
-    nav h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
+    /* Logo Styling */
+    .logo-container img {
+      max-height: 45px; /* Slightly adjusted for better visual balance */
+      vertical-align: middle;
+      display: block; /* Remove extra space below image */
+      transition: transform var(--transition-speed) ease;
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.05);
     }
 
     nav ul {
@@ -90,20 +101,58 @@
       text-decoration: none;
       padding: 0.5rem;
       border-radius: 4px;
-      transition: background-color 0.3s ease;
+      transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
     }
 
     nav a:hover,
     nav a:focus-visible {
       background-color: var(--secondary-color);
+      transform: translateY(-2px);
       outline: 2px solid var(--white);
     }
 
-    /* Logo Styling */
-    .logo-container img {
-      max-height: 50px; /* Adjust as needed */
-      vertical-align: middle;
-      display: block; /* Remove extra space below image */
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(rgba(27, 45, 95, 0.8), rgba(57, 82, 163, 0.8)), url('https://via.placeholder.com/1500x500/1b2d5f/ffffff?text=Secure+Communication') no-repeat center center/cover;
+      color: var(--white);
+      text-align: center;
+      padding: 6rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-section h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-section p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    /* Call to Action Button in Hero */
+    .hero-section .button {
+      background-color: var(--accent-color);
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      border-radius: 50px; /* Pill shape */
+      box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
+    }
+
+    .hero-section .button:hover,
+    .hero-section .button:focus {
+      background-color: #00a8be;
+      transform: translateY(-3px) scale(1.02);
     }
 
     /* Main content */
@@ -120,14 +169,63 @@
       padding: 1.8rem 2rem;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
+      line-height: 1.7; /* Improved readability */
     }
 
     section h2 {
       color: var(--primary-color);
-      font-size: 1.6rem;
+      font-size: 1.8rem; /* Slightly larger heading */
       margin-bottom: 1rem;
-      padding-bottom: 0.3rem;
-      border-bottom: 2px solid currentColor;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--secondary-color); /* Color border */
+    }
+
+    /* Feature Grid Section */
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .feature-item {
+        background-color: var(--background-color);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
+
+    .feature-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .feature-item .icon {
+        font-size: 3rem; /* Larger icons */
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+    }
+
+    .feature-item h3 {
+        font-size: 1.3rem;
+        color: var(--primary-color);
+        margin-bottom: 0.8rem;
+    }
+
+    .feature-item p {
+        color: var(--light-text-color);
+        font-size: 0.95rem;
+    }
+
+    /* Image in sections (if applicable, e.g., about us image) */
+    .section-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        margin-top: 1.5rem;
+        box-shadow: var(--shadow);
     }
 
     /* Lists */
@@ -149,8 +247,8 @@
       padding: 0.7rem 1.5rem;
       border-radius: var(--border-radius);
       font-weight: 600;
-      text-decoration: none; /* Ensure buttons don't have underlines */
-      transition: all 0.3s ease;
+      text-decoration: none;
+      transition: all var(--transition-speed) ease;
     }
 
     a.button:hover,
@@ -165,6 +263,7 @@
       text-align: center;
       padding: var(--spacing-unit);
       margin-top: auto;
+      color: var(--light-text-color);
     }
 
     /* Advertisement Containers */
@@ -177,6 +276,16 @@
       border-radius: var(--border-radius);
       max-width: 728px; /* Typical banner width */
       overflow: hidden; /* Prevent content from overflowing */
+      color: #777; /* Ad text color */
+      font-size: 0.9rem;
+    }
+
+    .ad-container img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0.5rem auto 0; /* Margin above image */
+      border-radius: 4px;
     }
 
     /* Responsive design */
@@ -195,12 +304,29 @@
         justify-content: center;
       }
 
+      .hero-section {
+        padding: 4rem 1rem;
+        min-height: 300px;
+      }
+
+      .hero-section h2 {
+        font-size: 2.2rem;
+      }
+
+      .hero-section p {
+        font-size: 1rem;
+      }
+
       main {
         margin: 1rem auto;
       }
 
       section {
         padding: 1.2rem;
+      }
+
+      section h2 {
+        font-size: 1.5rem;
       }
 
       .ad-container {
@@ -211,7 +337,7 @@
 
     /* Print styles */
     @media print {
-      nav, footer, .ad-container {
+      nav, footer, .ad-container, .hero-section, .button {
         display: none;
       }
 
@@ -221,7 +347,7 @@
       }
     }
 
-    /* --- New Styles for Functionality --- */
+    /* --- New Styles for Functionality (Modal and Accordion are retained) --- */
 
     /* Modal Styles */
     .modal {
@@ -257,35 +383,25 @@
       top: 10px;
       right: 20px;
       cursor: pointer;
-      transition: color 0.3s ease;
+      transition: color var(--transition-speed) ease;
     }
 
     .close-button:hover,
     .close-button:focus {
       color: var(--secondary-color);
       text-decoration: none;
-      outline: none; /* Remove outline for aesthetics, but ensure focus is visible for keyboard users elsewhere */
+      outline: none;
     }
 
     /* Modal Animations */
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @keyframes slideInTop {
-      from {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     /* Responsive adjustments for modal */
@@ -302,7 +418,7 @@
       margin-bottom: 1rem;
       border: 1px solid #ddd;
       border-radius: var(--border-radius);
-      overflow: hidden; /* Ensures rounded corners are respected */
+      overflow: hidden;
     }
 
     .accordion-header {
@@ -318,20 +434,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: background-color 0.3s ease;
-      border-radius: var(--border-radius); /* Apply initial border-radius */
+      transition: background-color var(--transition-speed) ease;
+      border-radius: var(--border-radius);
     }
 
     .accordion-header:hover,
     .accordion-header:focus-visible {
       background-color: var(--primary-color);
-      outline: 2px solid var(--white); /* For focus visibility */
+      outline: 2px solid var(--white);
     }
 
     .accordion-header .icon {
       margin-left: 1rem;
       font-size: 1.2rem;
-      transition: transform 0.3s ease;
+      transition: transform var(--transition-speed) ease;
     }
 
     .accordion-header[aria-expanded="true"] .icon {
@@ -342,7 +458,7 @@
       padding: 1.5rem;
       background-color: var(--white);
       border-top: 1px solid #eee;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); /* Subtle inner shadow */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
     }
 
     .accordion-panel[hidden] {
@@ -353,7 +469,7 @@
     .language-selector {
       display: flex;
       gap: 0.5rem;
-      margin-left: auto; /* Push to the right */
+      margin-left: auto;
     }
 
     .lang-button {
@@ -364,7 +480,7 @@
       border-radius: 4px;
       cursor: pointer;
       font-weight: 600;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
     }
 
     .lang-button:hover,
@@ -380,6 +496,7 @@
       cursor: default;
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujlZHXtQ/z55YV+XmX/p+2yKx/4d/9dD9J6Ew/m3/b2/Fz3S9u7k1x2b6/L0q8s/p5z4+8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <a href="#main-content" class="sr-only">Skip to main content</a>
@@ -392,7 +509,8 @@
         </a>
       </div>
       <ul role="menubar">
-        <li role="none"><a href="#goal" aria-current="page" data-key="navGoal" role="menuitem">ჩვენი მიზანი</a></li>
+        <li role="none"><a href="#goal" data-key="navGoal" role="menuitem">ჩვენი მიზანი</a></li>
+        <li role="none"><a href="#features" data-key="navFeatures" role="menuitem">ფუნქციები</a></li>
         <li role="none"><a href="#faq" data-key="navFaq" role="menuitem">კითხვები</a></li>
         <li role="none"><a href="#tools" data-key="navTools" role="menuitem">ინსტრუმენტები</a></li>
         <li role="none"><a href="#resources" data-key="navResources" role="menuitem">რესურსები</a></li>
@@ -407,24 +525,57 @@
     </nav>
   </header>
 
+  <section class="hero-section" role="banner">
+    <h2 data-key="heroTitle">თავისუფალი, უსაფრთხო, დაშიფრული კომუნიკაცია</h2>
+    <p data-key="heroSubtitle">ჩვენ ვქმნით ციფრულ სივრცეს, სადაც თქვენი აზრი და ინფორმაცია დაცულია ცენზურისგან და სრულიად კონფიდენციალურია.</p>
+    <a href="#goal" class="button" data-key="heroCta">დაიწყეთ დღესვე!</a>
+  </section>
+
   <div class="ad-container" id="ad-banner-top" style="margin-top: 2rem;">
       <p>Advertiser Banner (728x90) - Replace with actual ad code</p>
-      <img src="https://via.placeholder.com/728x90.png?text=Your+Top+Ad+Here" alt="Top Advertisement" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+      <img src="https://via.placeholder.com/728x90.png?text=Your+Top+Ad+Here" alt="Top Advertisement">
   </div>
 
   <main id="main-content">
     <section id="goal" aria-labelledby="goal-heading">
       <h2 id="goal-heading" data-key="goalHeading">ჩვენი მიზანი</h2>
       <p data-key="goalText">შექმნა დეცენტრალიზებული, დაშიფრული პლატფორმა, სადაც ყველას შეეძლება თავისუფლად გაზიარება და კომუნიკაცია — ცენზურის გარეშე.</p>
-      <a href="#" class="button" id="openGoalModal" data-key="learnMoreButton">
+      <img src="https://via.placeholder.com/800x450/3952a3/ffffff?text=Decentralized+Network" alt="Decentralized Network Illustration" class="section-image">
+      <a href="#" class="button" id="openGoalModal" data-key="learnMoreButton" style="margin-top: 1.5rem;">
         <span class="sr-only" data-key="learnMoreSrOnly">გაიგეთ მეტი</span>
         დაწვრილებით
       </a>
     </section>
 
+    <section id="features" aria-labelledby="features-heading">
+        <h2 id="features-heading" data-key="featuresHeading">ძირითადი ფუნქციები</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <i class="fas fa-lock icon"></i>
+                <h3 data-key="feature1Title">ბოლო-ბოლო დაშიფრვა</h3>
+                <p data-key="feature1Text">თქვენი შეტყობინებები და ფაილები დაცულია გამგზავნიდან მიმღებამდე. მხოლოდ თქვენ და მიმღებს გაქვთ წვდომა გაშიფრულ ინფორმაციაზე.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-network-wired icon"></i>
+                <h3 data-key="feature2Title">დეცენტრალიზებული ქსელი</h3>
+                <p data-key="feature2Text">არ არსებობს ცენტრალური კონტროლი, რაც უზრუნველყოფს ცენზურისგან გამძლეობას და სერვისის მუდმივ ხელმისაწვდომობას.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-user-secret icon"></i>
+                <h3 data-key="feature3Title">ანონიმურობა</h3>
+                <p data-key="feature3Text">ჩვენ პრიორიტეტს ვანიჭებთ თქვენს კონფიდენციალურობას. არანაირი პირადი მონაცემების შეგროვება ან თვალთვალი.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-handshake icon"></i>
+                <h3 data-key="feature4Title">ღია კოდი</h3>
+                <p data-key="feature4Text">ჩვენი პლატფორმა ღია კოდისაა, რაც საშუალებას აძლევს საზოგადოებას გადაამოწმოს უსაფრთხოება და წვლილი შეიტანოს მის განვითარებაში.</p>
+            </div>
+        </div>
+    </section>
+
     <div class="ad-container" id="ad-content-1">
         <p>Advertiser Content Ad (300x250) - Replace with actual ad code</p>
-        <img src="https://via.placeholder.com/300x250.png?text=Your+Content+Ad+Here" alt="Content Advertisement" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        <img src="https://via.placeholder.com/300x250.png?text=Your+Content+Ad+Here" alt="Content Advertisement">
     </div>
 
     <section id="faq" aria-labelledby="faq-heading">
@@ -505,7 +656,7 @@
     <p><span data-key="footerText">© 2025 NewGeoPlatform | უფასო, ღია და დამოუკიდებელი სივრცე</span></p>
     <div class="ad-container" id="ad-footer" style="margin-top: 1rem;">
         <p>Advertiser Footer Ad (468x60) - Replace with actual ad code</p>
-        <img src="https://via.placeholder.com/468x60.png?text=Your+Footer+Ad+Here" alt="Footer Advertisement" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        <img src="https://via.placeholder.com/468x60.png?text=Your+Footer+Ad+Here" alt="Footer Advertisement">
     </div>
   </footer>
 
@@ -515,12 +666,25 @@
       ka: {
         siteTitle: "NewGeoPlatform",
         navGoal: "ჩვენი მიზანი",
+        navFeatures: "ფუნქციები", // New navigation item
         navFaq: "კითხვები",
         navTools: "ინსტრუმენტები",
         navResources: "რესურსები",
         navContact: "კონტაქტი",
+        heroTitle: "თავისუფალი, უსაფრთხო, დაშიფრული კომუნიკაცია", // New hero section text
+        heroSubtitle: "ჩვენ ვქმნით ციფრულ სივრცეს, სადაც თქვენი აზრი და ინფორმაცია დაცულია ცენზურისგან და სრულიად კონფიდენციალურია.",
+        heroCta: "დაიწყეთ დღესვე!",
         goalHeading: "ჩვენი მიზანი",
         goalText: "შექმნა დეცენტრალიზებული, დაშიფრული პლატფორმა, სადაც ყველას შეეძლება თავისუფლად გაზიარება და კომუნიკაცია — ცენზურის გარეშე.",
+        featuresHeading: "ძირითადი ფუნქციები", // New feature section heading
+        feature1Title: "ბოლო-ბოლო დაშიფრვა",
+        feature1Text: "თქვენი შეტყობინებები და ფაილები დაცულია გამგზავნიდან მიმღებამდე. მხოლოდ თქვენ და მიმღებს გაქვთ წვდომა გაშიფრულ ინფორმაციაზე.",
+        feature2Title: "დეცენტრალიზებული ქსელი",
+        feature2Text: "არ არსებობს ცენტრალური კონტროლი, რაც უზრუნველყოფს ცენზურისგან გამძლეობას და სერვისის მუდმივ ხელმისაწვდომობას.",
+        feature3Title: "ანონიმურობა",
+        feature3Text: "ჩვენ პრიორიტეტს ვანიჭებთ თქვენს კონფიდენციალურობას. არანაირი პირადი მონაცემების შეგროვება ან თვალთვალი.",
+        feature4Title: "ღია კოდი",
+        feature4Text: "ჩვენი პლატფორმა ღია კოდისაა, რაც საშუალებას აძლევს საზოგადოებას გადაამოწმოს უსაფრთხოება და წვლილი შეიტანოს მის განვითარებაში.",
         learnMoreButton: "დაწვრილებით",
         learnMoreSrOnly: "გაიგეთ მეტი",
         faqHeading: "ხშირად დასმული კითხვები",
@@ -553,12 +717,25 @@
       en: {
         siteTitle: "NewGeoPlatform",
         navGoal: "Our Goal",
+        navFeatures: "Features",
         navFaq: "FAQ",
         navTools: "Tools",
         navResources: "Resources",
         navContact: "Contact",
+        heroTitle: "Free, Secure, Encrypted Communication",
+        heroSubtitle: "We are building a digital space where your ideas and information are protected from censorship and remain completely confidential.",
+        heroCta: "Get Started Today!",
         goalHeading: "Our Goal",
         goalText: "To create a decentralized, encrypted platform where everyone can freely share and communicate — without censorship.",
+        featuresHeading: "Core Features",
+        feature1Title: "End-to-End Encryption",
+        feature1Text: "Your messages and files are secured from sender to receiver. Only you and the recipient have access to the decrypted information.",
+        feature2Title: "Decentralized Network",
+        feature2Text: "There's no central control, ensuring censorship resistance and continuous service availability.",
+        feature3Title: "Anonymity",
+        feature3Text: "We prioritize your privacy. No personal data collection or surveillance.",
+        feature4Title: "Open Source",
+        feature4Text: "Our platform is open source, allowing the community to verify security and contribute to its development.",
         learnMoreButton: "Learn More",
         learnMoreSrOnly: "Learn more about our goal",
         faqHeading: "Frequently Asked Questions",
@@ -591,12 +768,25 @@
       de: {
         siteTitle: "NewGeoPlatform",
         navGoal: "Unser Ziel",
+        navFeatures: "Funktionen",
         navFaq: "FAQ",
         navTools: "Werkzeuge",
         navResources: "Ressourcen",
         navContact: "Kontakt",
+        heroTitle: "Freie, sichere, verschlüsselte Kommunikation",
+        heroSubtitle: "Wir schaffen einen digitalen Raum, in dem Ihre Ideen und Informationen vor Zensur geschützt und absolut vertraulich sind.",
+        heroCta: "Jetzt starten!",
         goalHeading: "Unser Ziel",
         goalText: "Eine dezentrale, verschlüsselte Plattform schaffen, auf der jeder frei kommunizieren und teilen kann — ohne Zensur.",
+        featuresHeading: "Kernfunktionen",
+        feature1Title: "Ende-zu-Ende-Verschlüsselung",
+        feature1Text: "Ihre Nachrichten und Dateien sind vom Absender bis zum Empfänger geschützt. Nur Sie und der Empfänger haben Zugriff auf die entschlüsselten Informationen.",
+        feature2Title: "Dezentrales Netzwerk",
+        feature2Text: "Es gibt keine zentrale Kontrolle, was Zensurresistenz und kontinuierliche Serviceverfügbarkeit gewährleistet.",
+        feature3Title: "Anonymität",
+        feature3Text: "Wir priorisieren Ihre Privatsphäre. Keine Sammlung oder Überwachung persönlicher Daten.",
+        feature4Title: "Open Source",
+        feature4Text: "Unsere Plattform ist Open Source, was der Gemeinschaft ermöglicht, die Sicherheit zu überprüfen und zur Entwicklung beizutragen.",
         learnMoreButton: "Mehr erfahren",
         learnMoreSrOnly: "Mehr über unser Ziel erfahren",
         faqHeading: "Häufig gestellte Fragen",
@@ -629,12 +819,25 @@
       ja: {
         siteTitle: "NewGeoPlatform",
         navGoal: "私たちの目標",
+        navFeatures: "機能",
         navFaq: "よくある質問",
         navTools: "ツール",
         navResources: "リソース",
         navContact: "お問い合わせ",
+        heroTitle: "自由で安全な暗号化された通信",
+        heroSubtitle: "私たちは、あなたのアイデアと情報が検閲から保護され、完全に機密性を保たれたデジタル空間を構築しています。",
+        heroCta: "今すぐ始める！",
         goalHeading: "私たちの目標",
         goalText: "誰もが自由に共有し、検閲なしにコミュニケーションできる分散型で暗号化されたプラットフォームを作成すること。",
+        featuresHeading: "主要機能",
+        feature1Title: "エンドツーエンド暗号化",
+        feature1Text: "あなたのメッセージとファイルは送信者から受信者まで保護されます。あなたと受信者だけが復号化された情報にアクセスできます。",
+        feature2Title: "分散型ネットワーク",
+        feature2Text: "中央管理がないため、検閲への耐性と継続的なサービス利用可能性が保証されます。",
+        feature3Title: "匿名性",
+        feature3Text: "私たちはあなたのプライバシーを最優先します。個人情報の収集や監視は行いません。",
+        feature4Title: "オープンソース",
+        feature4Text: "当社のプラットフォームはオープンソースであり、コミュニティがセキュリティを確認し、その開発に貢献することができます。",
         learnMoreButton: "もっと詳しく",
         learnMoreSrOnly: "私たちの目標についてもっと詳しく知る",
         faqHeading: "よくある質問",
