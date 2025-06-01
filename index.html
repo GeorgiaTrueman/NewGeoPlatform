@@ -1,983 +1,329 @@
 <!DOCTYPE html>
-<html lang="ka" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-  <meta name="description" content="დეცენტრალიზებული, დაშიფრული პლატფორმა თავისუფალი კომუნიკაციისთვის" />
-  <meta name="keywords" content="დეცენტრალიზებული, უსაფრთხოება, კრიპტოგრაფია, თავისუფალი კომუნიკაცია" />
-  <meta name="author" content="NewGeoPlatform" />
-  <meta property="og:title" content="NewGeoPlatform - თავისუფალი კომუნიკაციის პლატფორმა" />
-  <meta property="og:description" content="დეცენტრალიზებული და დაშიფრული გადაწყვეტილებები თანამედროვე საზოგადოებისთვის" />
-  <meta property="og:type" content="website" />
-  <title>NewGeoPlatform - თავისუფალი კომუნიკაციის პლატფორმა</title>
-  <style>
-    /* CSS Variables for maintainability */
-    :root {
-      --primary-color: #1b2d5f;
-      --secondary-color: #3952a3;
-      --accent-color: #00bcd4; /* New accent color for highlights */
-      --background-color: #fafafa;
-      --text-color: #222;
-      --light-text-color: #555;
-      --white: #ffffff;
-      --spacing-unit: 1rem;
-      --border-radius: 8px;
-      --shadow: 0 4px 10px rgba(0,0,0,0.1); /* Slightly deeper shadow */
-      --transition-speed: 0.3s;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujlZHXtQ/z55YV+XmX/p+2yKx/4d/9dD9J6Ew/m3/b2/Fz3S9u7k1x2b6/L0q8s/p5z4+8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Basic Reset & Variables */
+        :root {
+            --primary-color: #3498db; /* A friendly blue */
+            --secondary-color: #2c3e50; /* Darker blue/grey for text */
+            --accent-color: #e74c3c; /* A touch of red for emphasis */
+            --background-color: #f4f4f4;
+            --text-color: #333;
+            --light-text-color: #777;
+            --white: #ffffff;
+            --spacing-unit: 1rem;
+            --border-radius: 8px;
+            --shadow: 0 4px 10px rgba(0,0,0,0.1);
+            --transition-speed: 0.3s;
+        }
 
-    /* Reset and base styles */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      background-color: var(--background-color);
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      font-size: 16px; /* Base font size */
-    }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
 
-    /* Accessibility improvements */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-    }
+        /* Header/Navigation */
+        header {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+        }
 
-    /* Header styles */
-    header {
-      background-color: var(--primary-color);
-      color: var(--white);
-      padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: var(--shadow);
-    }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-    nav {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: var(--spacing-unit);
-    }
+        .site-title {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
 
-    /* Logo Styling */
-    .logo-container img {
-      max-height: 45px; /* Slightly adjusted for better visual balance */
-      vertical-align: middle;
-      display: block; /* Remove extra space below image */
-      transition: transform var(--transition-speed) ease;
-    }
+        .site-title a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
 
-    .logo-container img:hover {
-      transform: scale(1.05);
-    }
+        .site-title a:hover {
+            color: var(--primary-color);
+        }
 
-    nav ul {
-      display: flex;
-      gap: 1.2rem;
-      list-style: none;
-    }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    nav a {
-      color: inherit;
-      text-decoration: none;
-      padding: 0.5rem;
-      border-radius: 4px;
-      transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
-    }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 0.8rem;
+            border-radius: var(--border-radius);
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
 
-    nav a:hover,
-    nav a:focus-visible {
-      background-color: var(--secondary-color);
-      transform: translateY(-2px);
-      outline: 2px solid var(--white);
-    }
+        nav a:hover, nav a:focus {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
 
-    /* Hero Section */
-    .hero-section {
-      background: linear-gradient(rgba(27, 45, 95, 0.8), rgba(57, 82, 163, 0.8)), url('https://via.placeholder.com/1500x500/1b2d5f/ffffff?text=Secure+Communication') no-repeat center center/cover;
-      color: var(--white);
-      text-align: center;
-      padding: 6rem 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 400px;
-      box-shadow: var(--shadow);
-    }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)), url('https://via.placeholder.com/1500x500/2c3e50/ffffff?text=Hello+World') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
 
-    .hero-section h2 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
 
-    .hero-section p {
-      font-size: 1.3rem;
-      max-width: 800px;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-    }
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
 
-    /* Call to Action Button in Hero */
-    .hero-section .button {
-      background-color: var(--accent-color);
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      border-radius: 50px; /* Pill shape */
-      box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
-    }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            box-shadow: 0 5px 15px rgba(0, 140, 255, 0.3);
+        }
 
-    .hero-section .button:hover,
-    .hero-section .button:focus {
-      background-color: #00a8be;
-      transform: translateY(-3px) scale(1.02);
-    }
+        .btn:hover, .btn:focus {
+            background-color: #2980b9; /* Darker primary */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 140, 255, 0.4);
+        }
 
-    /* Main content */
-    main {
-      flex: 1;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 var(--spacing-unit);
-    }
+        /* Main Content Sections */
+        section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
 
-    section {
-      margin-bottom: 3rem;
-      background: var(--white);
-      padding: 1.8rem 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      line-height: 1.7; /* Improved readability */
-    }
+        section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
 
-    section h2 {
-      color: var(--primary-color);
-      font-size: 1.8rem; /* Slightly larger heading */
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--secondary-color); /* Color border */
-    }
+        .about-me, .skills, .contact {
+            text-align: center;
+        }
 
-    /* Feature Grid Section */
-    .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 0 0 6px rgba(52, 152, 219, 0.3);
+        }
 
-    .feature-item {
-        background-color: var(--background-color);
-        padding: 1.5rem;
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow);
-        text-align: center;
-        transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+        }
 
-    .feature-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
+        .skills-list li {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color var(--transition-speed) ease;
+        }
 
-    .feature-item .icon {
-        font-size: 3rem; /* Larger icons */
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-    }
+        .skills-list li:hover {
+            background-color: var(--secondary-color);
+        }
 
-    .feature-item h3 {
-        font-size: 1.3rem;
-        color: var(--primary-color);
-        margin-bottom: 0.8rem;
-    }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
 
-    .feature-item p {
-        color: var(--light-text-color);
-        font-size: 0.95rem;
-    }
+        .social-links a {
+            color: var(--secondary-color);
+            font-size: 2.5rem;
+            transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
 
-    /* Image in sections (if applicable, e.g., about us image) */
-    .section-image {
-        max-width: 100%;
-        height: auto;
-        border-radius: var(--border-radius);
-        margin-top: 1.5rem;
-        box-shadow: var(--shadow);
-    }
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
 
-    /* Lists */
-    ul {
-      padding-left: 1.3rem;
-    }
 
-    ul li {
-      margin-bottom: 0.8rem;
-    }
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: auto; /* Pushes footer to the bottom */
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+        }
 
-    /* Buttons */
-    a.button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background-color: var(--primary-color);
-      color: var(--white);
-      padding: 0.7rem 1.5rem;
-      border-radius: var(--border-radius);
-      font-weight: 600;
-      text-decoration: none;
-      transition: all var(--transition-speed) ease;
-    }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
 
-    a.button:hover,
-    a.button:focus {
-      background-color: var(--secondary-color);
-      transform: translateY(-2px);
-    }
+            .hero p {
+                font-size: 1.1rem;
+            }
 
-    /* Footer */
-    footer {
-      background: #e4e4e4;
-      text-align: center;
-      padding: var(--spacing-unit);
-      margin-top: auto;
-      color: var(--light-text-color);
-    }
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
 
-    /* Advertisement Containers */
-    .ad-container {
-      text-align: center;
-      margin: 2rem auto; /* Adjust margin as needed */
-      padding: 1rem;
-      background-color: #f0f0f0;
-      border: 1px dashed #ccc;
-      border-radius: var(--border-radius);
-      max-width: 728px; /* Typical banner width */
-      overflow: hidden; /* Prevent content from overflowing */
-      color: #777; /* Ad text color */
-      font-size: 0.9rem;
-    }
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
 
-    .ad-container img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0.5rem auto 0; /* Margin above image */
-      border-radius: 4px;
-    }
+            section {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
 
-    /* Responsive design */
-    @media (max-width: 768px) {
-      :root {
-        --spacing-unit: 0.75rem;
-      }
-
-      nav {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero-section {
-        padding: 4rem 1rem;
-        min-height: 300px;
-      }
-
-      .hero-section h2 {
-        font-size: 2.2rem;
-      }
-
-      .hero-section p {
-        font-size: 1rem;
-      }
-
-      main {
-        margin: 1rem auto;
-      }
-
-      section {
-        padding: 1.2rem;
-      }
-
-      section h2 {
-        font-size: 1.5rem;
-      }
-
-      .ad-container {
-        margin: 1rem auto; /* Smaller margin on mobile */
-        max-width: 320px; /* Smaller banner width on mobile */
-      }
-    }
-
-    /* Print styles */
-    @media print {
-      nav, footer, .ad-container, .hero-section, .button {
-        display: none;
-      }
-
-      section {
-        box-shadow: none;
-        border: 1px solid #ddd;
-      }
-    }
-
-    /* --- New Styles for Functionality (Modal and Accordion are retained) --- */
-
-    /* Modal Styles */
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 2000; /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
-      padding-top: 60px;
-      animation: fadeIn 0.3s forwards; /* Add fade-in animation */
-    }
-
-    .modal-content {
-      background-color: var(--white);
-      margin: 5% auto; /* 5% from the top and centered */
-      padding: 2.5rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      max-width: 600px;
-      position: relative;
-      animation: slideInTop 0.4s forwards; /* Add slide-in animation */
-    }
-
-    .close-button {
-      color: var(--primary-color);
-      font-size: 2.2rem;
-      font-weight: bold;
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      cursor: pointer;
-      transition: color var(--transition-speed) ease;
-    }
-
-    .close-button:hover,
-    .close-button:focus {
-      color: var(--secondary-color);
-      text-decoration: none;
-      outline: none;
-    }
-
-    /* Modal Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideInTop {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* Responsive adjustments for modal */
-    @media (max-width: 768px) {
-      .modal-content {
-        margin: 15% auto;
-        padding: 1.5rem;
-        max-width: 90%;
-      }
-    }
-
-    /* Accordion Styles */
-    .accordion-item {
-      margin-bottom: 1rem;
-      border: 1px solid #ddd;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-    }
-
-    .accordion-header {
-      background-color: var(--secondary-color);
-      color: var(--white);
-      padding: 1rem 1.5rem;
-      width: 100%;
-      text-align: left;
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color var(--transition-speed) ease;
-      border-radius: var(--border-radius);
-    }
-
-    .accordion-header:hover,
-    .accordion-header:focus-visible {
-      background-color: var(--primary-color);
-      outline: 2px solid var(--white);
-    }
-
-    .accordion-header .icon {
-      margin-left: 1rem;
-      font-size: 1.2rem;
-      transition: transform var(--transition-speed) ease;
-    }
-
-    .accordion-header[aria-expanded="true"] .icon {
-      transform: rotate(180deg);
-    }
-
-    .accordion-panel {
-      padding: 1.5rem;
-      background-color: var(--white);
-      border-top: 1px solid #eee;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .accordion-panel[hidden] {
-      display: none;
-    }
-
-    /* Language Selector Styles */
-    .language-selector {
-      display: flex;
-      gap: 0.5rem;
-      margin-left: auto;
-    }
-
-    .lang-button {
-      background-color: var(--secondary-color);
-      color: var(--white);
-      border: 1px solid var(--white);
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
-    }
-
-    .lang-button:hover,
-    .lang-button:focus-visible {
-      background-color: var(--primary-color);
-      border-color: var(--white);
-      outline: 2px solid var(--white);
-    }
-
-    .lang-button.active {
-      background-color: var(--primary-color);
-      border-color: var(--white);
-      cursor: default;
-    }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujlZHXtQ/z55YV+XmX/p+2yKx/4d/9dD9J6Ew/m3/b2/Fz3S9u7k1x2b6/L0q8s/p5z4+8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            section h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <a href="#main-content" class="sr-only">Skip to main content</a>
-
-  <header>
-    <nav aria-label="მთავარი ნავიგაცია">
-      <div class="logo-container">
-        <a href="/" aria-label="NewGeoPlatform Homepage">
-          <img src="http://googleusercontent.com/image_generation_content/0" alt="NewGeoPlatform Logo">
-        </a>
-      </div>
-      <ul role="menubar">
-        <li role="none"><a href="#goal" data-key="navGoal" role="menuitem">ჩვენი მიზანი</a></li>
-        <li role="none"><a href="#features" data-key="navFeatures" role="menuitem">ფუნქციები</a></li>
-        <li role="none"><a href="#faq" data-key="navFaq" role="menuitem">კითხვები</a></li>
-        <li role="none"><a href="#tools" data-key="navTools" role="menuitem">ინსტრუმენტები</a></li>
-        <li role="none"><a href="#resources" data-key="navResources" role="menuitem">რესურსები</a></li>
-        <li role="none"><a href="#contact" data-key="navContact" role="menuitem">კონტაქტი</a></li>
-      </ul>
-      <div class="language-selector">
-        <button class="lang-button" data-lang="ka">KA</button>
-        <button class="lang-button" data-lang="en">EN</button>
-        <button class="lang-button" data-lang="de">DE</button>
-        <button class="lang-button" data-lang="ja">JA</button>
-      </div>
-    </nav>
-  </header>
-
-  <section class="hero-section" role="banner">
-    <h2 data-key="heroTitle">თავისუფალი, უსაფრთხო, დაშიფრული კომუნიკაცია</h2>
-    <p data-key="heroSubtitle">ჩვენ ვქმნით ციფრულ სივრცეს, სადაც თქვენი აზრი და ინფორმაცია დაცულია ცენზურისგან და სრულიად კონფიდენციალურია.</p>
-    <a href="#goal" class="button" data-key="heroCta">დაიწყეთ დღესვე!</a>
-  </section>
-
-  <div class="ad-container" id="ad-banner-top" style="margin-top: 2rem;">
-      <p>Advertiser Banner (728x90) - Replace with actual ad code</p>
-      <img src="https://via.placeholder.com/728x90.png?text=Your+Top+Ad+Here" alt="Top Advertisement">
-  </div>
-
-  <main id="main-content">
-    <section id="goal" aria-labelledby="goal-heading">
-      <h2 id="goal-heading" data-key="goalHeading">ჩვენი მიზანი</h2>
-      <p data-key="goalText">შექმნა დეცენტრალიზებული, დაშიფრული პლატფორმა, სადაც ყველას შეეძლება თავისუფლად გაზიარება და კომუნიკაცია — ცენზურის გარეშე.</p>
-      <img src="https://via.placeholder.com/800x450/3952a3/ffffff?text=Decentralized+Network" alt="Decentralized Network Illustration" class="section-image">
-      <a href="#" class="button" id="openGoalModal" data-key="learnMoreButton" style="margin-top: 1.5rem;">
-        <span class="sr-only" data-key="learnMoreSrOnly">გაიგეთ მეტი</span>
-        დაწვრილებით
-      </a>
-    </section>
-
-    <section id="features" aria-labelledby="features-heading">
-        <h2 id="features-heading" data-key="featuresHeading">ძირითადი ფუნქციები</h2>
-        <div class="feature-grid">
-            <div class="feature-item">
-                <i class="fas fa-lock icon"></i>
-                <h3 data-key="feature1Title">ბოლო-ბოლო დაშიფრვა</h3>
-                <p data-key="feature1Text">თქვენი შეტყობინებები და ფაილები დაცულია გამგზავნიდან მიმღებამდე. მხოლოდ თქვენ და მიმღებს გაქვთ წვდომა გაშიფრულ ინფორმაციაზე.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-network-wired icon"></i>
-                <h3 data-key="feature2Title">დეცენტრალიზებული ქსელი</h3>
-                <p data-key="feature2Text">არ არსებობს ცენტრალური კონტროლი, რაც უზრუნველყოფს ცენზურისგან გამძლეობას და სერვისის მუდმივ ხელმისაწვდომობას.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-user-secret icon"></i>
-                <h3 data-key="feature3Title">ანონიმურობა</h3>
-                <p data-key="feature3Text">ჩვენ პრიორიტეტს ვანიჭებთ თქვენს კონფიდენციალურობას. არანაირი პირადი მონაცემების შეგროვება ან თვალთვალი.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-handshake icon"></i>
-                <h3 data-key="feature4Title">ღია კოდი</h3>
-                <p data-key="feature4Text">ჩვენი პლატფორმა ღია კოდისაა, რაც საშუალებას აძლევს საზოგადოებას გადაამოწმოს უსაფრთხოება და წვლილი შეიტანოს მის განვითარებაში.</p>
-            </div>
+    <header>
+        <div class="container">
+            <h1 class="site-title"><a href="/">Your Name</a></h1>
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="blog.html">Blog</a></li> <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </section>
+    </header>
 
-    <div class="ad-container" id="ad-content-1">
-        <p>Advertiser Content Ad (300x250) - Replace with actual ad code</p>
-        <img src="https://via.placeholder.com/300x250.png?text=Your+Content+Ad+Here" alt="Content Advertisement">
-    </div>
+    <main>
+        <section class="hero">
+            <h1>Hi, I'm [Your Name]!</h1>
+            <p>I'm a passionate [Your Profession/Interest] who loves to [something you love to do related to your field].</p>
+            <a href="blog.html" class="btn">Read My Blog</a>
+        </section>
 
-    <section id="faq" aria-labelledby="faq-heading">
-      <h2 id="faq-heading" data-key="faqHeading">ხშირად დასმული კითხვები</h2>
-      <div class="accordion">
-        <div class="accordion-item">
-          <button class="accordion-header" aria-expanded="false" aria-controls="faq1-panel" id="faq1-trigger">
-            <span data-key="faq1Q">რა არის დეცენტრალიზაცია?</span>
-            <span class="icon">▼</span>
-          </button>
-          <div class="accordion-panel" id="faq1-panel" role="region" aria-labelledby="faq1-trigger" hidden>
-            <p data-key="faq1A">დეცენტრალიზაცია ნიშნავს, რომ არ არსებობს ცენტრალური სერვერი ან ორგანო, რომელიც აკონტროლებს მონაცემებს. ინფორმაცია გადანაწილებულია მრავალ მონაწილეს შორის, რაც ზრდის უსაფრთხოებას და გამძლეობას ცენზურის მიმართ.</p>
-          </div>
+        <div class="container">
+            <section id="about" class="about-me">
+                <img src="https://via.placeholder.com/150/3498db/ffffff?text=Profile" alt="Your Profile Picture" class="profile-picture">
+                <h2>About Me</h2>
+                <p>Hello! I'm [Your Name], and I'm deeply interested in [Your primary interest, e.g., web development, data science, creative writing]. My journey started with [mention a brief origin story or key experience]. I enjoy [mention a hobby or personal detail].</p>
+                <p>Currently, I'm focusing on [your current learning/work focus, e.g., building scalable web applications, exploring AI, writing short stories]. I believe in [your personal philosophy or goal].</p>
+            </section>
+
+            <section id="skills" class="skills">
+                <h2>My Skills</h2>
+                <ul class="skills-list">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>[Skill 4]</li>
+                    <li>[Skill 5]</li>
+                    <li>[Skill 6]</li>
+                    <li>[Skill 7]</li>
+                    <li>[Skill 8]</li>
+                </ul>
+            </section>
+
+            <section id="contact" class="contact">
+                <h2>Get in Touch</h2>
+                <p>Feel free to connect with me through my social media or email.</p>
+                <div class="social-links">
+                    <a href="mailto:your.email@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                <p style="margin-top: 1.5rem;">Or email me directly: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            </section>
         </div>
+    </main>
 
-        <div class="accordion-item">
-          <button class="accordion-header" aria-expanded="false" aria-controls="faq2-panel" id="faq2-trigger">
-            <span data-key="faq2Q">როგორ ხდება კომუნიკაციის დაშიფვრა?</span>
-            <span class="icon">▼</span>
-          </button>
-          <div class="accordion-panel" id="faq2-panel" role="region" aria-labelledby="faq2-trigger" hidden>
-            <p data-key="faq2A">ჩვენ ვიყენებთ ბოლო-ბოლო დაშიფრვას (end-to-end encryption), რაც იმას ნიშნავს, რომ თქვენი შეტყობინებები და მონაცემები დაშიფრულია გამგზავნიდან მიმღებამდე. მხოლოდ თქვენ და მიმღებს გაქვთ წვდომა გაშიფრულ ინფორმაციაზე.</p>
-          </div>
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Your Name. All rights reserved.</p>
         </div>
+    </footer>
 
-        <div class="accordion-item">
-          <button class="accordion-header" aria-expanded="false" aria-controls="faq3-panel" id="faq3-trigger">
-            <span data-key="faq3Q">რა არის NewGeoPlatform-ის უპირატესობა?</span>
-            <span class="icon">▼</span>
-          </button>
-          <div class="accordion-panel" id="faq3-panel" role="region" aria-labelledby="faq3-trigger" hidden>
-            <p data-key="faq3A">ჩვენი პლატფორმა უზრუნველყოფს სრულ კონფიდენციალურობას, უსაფრთხოებას და ცენზურისგან თავისუფალ კომუნიკაციას. არ არსებობს შუამავალი, რომელიც თვალყურს ადევნებს ან ინახავს თქვენს მონაცემებს.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="tools">
-      <h2 id="tools-heading" data-key="toolsHeading">ინსტრუმენტები</h2>
-      <p data-key="toolsText">გამოიყენეთ ჩვენი ინსტრუმენტები უსაფრთხო კომუნიკაციისთვის:</p>
-      <ul>
-        <li><span data-key="tool1">დაშიფრული ჩეთი</span></li>
-        <li><span data-key="tool2">უსაფრთხო ფაილის გაზიარება</span></li>
-        <li><span data-key="tool3">ანონიმური დათვალიერება</span></li>
-      </ul>
-    </section>
-
-    <section id="resources">
-      <h2 id="resources-heading" data-key="resourcesHeading">რესურსები</h2>
-      <p data-key="resourcesText">მოიძიეთ მეტი ინფორმაცია დეცენტრალიზებული ტექნოლოგიების შესახებ:</p>
-      <ul>
-        <li><a href="#" data-key="resource1">ბლოგი</a></li>
-        <li><a href="#" data-key="resource2">დოკუმენტაცია</a></li>
-        <li><a href="#" data-key="resource3">ხშირად დასმული კითხვები</a></li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2 id="contact-heading" data-key="contactHeading">კონტაქტი</h2>
-      <p data-key="contactText">დაგვიკავშირდით ნებისმიერი შეკითხვისთვის:</p>
-      <ul>
-        <li><span data-key="contactEmail">ელ-ფოსტა:</span> <a href="mailto:info@newgeoplatform.com">info@newgeoplatform.com</a></li>
-        <li><span data-key="contactSocial">სოციალური მედია:</span> <a href="#">Twitter</a>, <a href="#">Telegram</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <div id="goalDetailsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-    <div class="modal-content">
-      <span class="close-button" aria-label="დახურვა">&times;</span>
-      <h3 id="modalTitle" data-key="modalTitle">ჩვენი მიზანი: დეტალურად</h3>
-      <p id="modalDescription" data-key="modalDescription1">ჩვენი მისიაა შევქმნათ ციფრული სივრცე, სადაც კომუნიკაცია და ინფორმაციის გაცვლა სრულად თავისუფალი და დაცულია ყოველგვარი ჩარევისგან. NewGeoPlatform იყენებს მოწინავე კრიპტოგრაფიულ ტექნოლოგიებს და დეცენტრალიზებულ არქიტექტურას, რათით უზრუნველყოს თქვენი მონაცემების კონფიდენციალურობა და უსაფრთხოება. ჩვენ გვჯერა, რომ ყველას აქვს უფლება გამოხატოს საკუთარი აზრები ცენზურის, თვალთვალის ან შეზღუდვების გარეშე. ჩვენი პლატფორმა შექმნილია იმისათვის, რომ ხელი შეუწყოს ღია დიალოგს და ცოდნის გაზიარებას უსაფრთხო და სანდო გარემოში.</p>
-      <p data-key="modalDescription2">ჩვენი ხედვა მოიცავს გლობალური ქსელის შექმნას, რომელიც აერთიანებს მომხმარებლებს საზღვრებისა და ბარიერების გარეშე, აძლევს მათ შესაძლებლობას, სრულად აკონტროლონ საკუთარი ციფრული არსებობა.</p>
-    </div>
-  </div>
-
-  <footer role="contentinfo">
-    <p><span data-key="footerText">© 2025 NewGeoPlatform | უფასო, ღია და დამოუკიდებელი სივრცე</span></p>
-    <div class="ad-container" id="ad-footer" style="margin-top: 1rem;">
-        <p>Advertiser Footer Ad (468x60) - Replace with actual ad code</p>
-        <img src="https://via.placeholder.com/468x60.png?text=Your+Footer+Ad+Here" alt="Footer Advertisement">
-    </div>
-  </footer>
-
-  <script>
-    // --- Language Data ---
-    const translations = {
-      ka: {
-        siteTitle: "NewGeoPlatform",
-        navGoal: "ჩვენი მიზანი",
-        navFeatures: "ფუნქციები", // New navigation item
-        navFaq: "კითხვები",
-        navTools: "ინსტრუმენტები",
-        navResources: "რესურსები",
-        navContact: "კონტაქტი",
-        heroTitle: "თავისუფალი, უსაფრთხო, დაშიფრული კომუნიკაცია", // New hero section text
-        heroSubtitle: "ჩვენ ვქმნით ციფრულ სივრცეს, სადაც თქვენი აზრი და ინფორმაცია დაცულია ცენზურისგან და სრულიად კონფიდენციალურია.",
-        heroCta: "დაიწყეთ დღესვე!",
-        goalHeading: "ჩვენი მიზანი",
-        goalText: "შექმნა დეცენტრალიზებული, დაშიფრული პლატფორმა, სადაც ყველას შეეძლება თავისუფლად გაზიარება და კომუნიკაცია — ცენზურის გარეშე.",
-        featuresHeading: "ძირითადი ფუნქციები", // New feature section heading
-        feature1Title: "ბოლო-ბოლო დაშიფრვა",
-        feature1Text: "თქვენი შეტყობინებები და ფაილები დაცულია გამგზავნიდან მიმღებამდე. მხოლოდ თქვენ და მიმღებს გაქვთ წვდომა გაშიფრულ ინფორმაციაზე.",
-        feature2Title: "დეცენტრალიზებული ქსელი",
-        feature2Text: "არ არსებობს ცენტრალური კონტროლი, რაც უზრუნველყოფს ცენზურისგან გამძლეობას და სერვისის მუდმივ ხელმისაწვდომობას.",
-        feature3Title: "ანონიმურობა",
-        feature3Text: "ჩვენ პრიორიტეტს ვანიჭებთ თქვენს კონფიდენციალურობას. არანაირი პირადი მონაცემების შეგროვება ან თვალთვალი.",
-        feature4Title: "ღია კოდი",
-        feature4Text: "ჩვენი პლატფორმა ღია კოდისაა, რაც საშუალებას აძლევს საზოგადოებას გადაამოწმოს უსაფრთხოება და წვლილი შეიტანოს მის განვითარებაში.",
-        learnMoreButton: "დაწვრილებით",
-        learnMoreSrOnly: "გაიგეთ მეტი",
-        faqHeading: "ხშირად დასმული კითხვები",
-        faq1Q: "რა არის დეცენტრალიზაცია?",
-        faq1A: "დეცენტრალიზაცია ნიშნავს, რომ არ არსებობს ცენტრალური სერვერი ან ორგანო, რომელიც აკონტროლებს მონაცემებს. ინფორმაცია გადანაწილებულია მრავალ მონაწილეს შორის, რაც ზრდის უსაფრთხოებას და გამძლეობას ცენზურის მიმართ.",
-        faq2Q: "როგორ ხდება კომუნიკაციის დაშიფვრა?",
-        faq2A: "ჩვენ ვიყენებთ ბოლო-ბოლო დაშიფრვას (end-to-end encryption), რაც იმას ნიშნავს, რომ თქვენი შეტყობინებები და მონაცემები დაშიფრულია გამგზავნიდან მიმღებამდე. მხოლოდ თქვენ და მიმღებს გაქვთ წვდომა გაშიფრულ ინფორმაციაზე.",
-        faq3Q: "რა არის NewGeoPlatform-ის უპირატესობა?",
-        faq3A: "ჩვენი პლატფორმა უზრუნველყოფს სრულ კონფიდენციალურობას, უსაფრთხოებას და ცენზურისგან თავისუფალ კომუნიკაციას. არ არსებობს შუამავალი, რომელიც თვალყურს ადევნებს ან ინახავს თქვენს მონაცემებს.",
-        toolsHeading: "ინსტრუმენტები",
-        toolsText: "გამოიყენეთ ჩვენი ინსტრუმენტები უსაფრთხო კომუნიკაციისთვის:",
-        tool1: "დაშიფრული ჩეთი",
-        tool2: "უსაფრთხო ფაილის გაზიარება",
-        tool3: "ანონიმური დათვალიერება",
-        resourcesHeading: "რესურსები",
-        resourcesText: "მოიძიეთ მეტი ინფორმაცია დეცენტრალიზებული ტექნოლოგიების შესახებ:",
-        resource1: "ბლოგი",
-        resource2: "დოკუმენტაცია",
-        resource3: "ხშირად დასმული კითხვები",
-        contactHeading: "კონტაქტი",
-        contactText: "დაგვიკავშირდით ნებისმიერი შეკითხვისთვის:",
-        contactEmail: "ელ-ფოსტა:",
-        contactSocial: "სოციალური მედია:",
-        modalTitle: "ჩვენი მიზანი: დეტალურად",
-        modalDescription1: "ჩვენი მისიაა შევქმნათ ციფრული სივრცე, სადაც კომუნიკაცია და ინფორმაციის გაცვლა სრულად თავისუფალი და დაცულია ყოველგვარი ჩარევისგან. NewGeoPlatform იყენებს მოწინავე კრიპტოგრაფიულ ტექნოლოგიებს და დეცენტრალიზებულ არქიტექტურას, რათით უზრუნველყოს თქვენი მონაცემების კონფიდენციალურობა და უსაფრთხოება. ჩვენ გვჯერა, რომ ყველას აქვს უფლება გამოხატოს საკუთარი აზრები ცენზურის, თვალთვალის ან შეზღუდვების გარეშე. ჩვენი პლატფორმა შექმნილია იმისათვის, რომ ხელი შეუწყოს ღია დიალოგს და ცოდნის გაზიარებას უსაფრთხო და სანდო გარემოში.",
-        modalDescription2: "ჩვენი ხედვა მოიცავს გლობალური ქსელის შექმნას, რომელიც აერთიანებს მომხმარებლებს საზღვრებისა და ბარიერების გარეშე, აძლევს მათ შესაძლებლობას, სრულად აკონტროლონ საკუთარი ციფრული არსებობა.",
-        footerText: "© 2025 NewGeoPlatform | უფასო, ღია და დამოუკიდებელი სივრცე",
-        closeModalAriaLabel: "დახურვა"
-      },
-      en: {
-        siteTitle: "NewGeoPlatform",
-        navGoal: "Our Goal",
-        navFeatures: "Features",
-        navFaq: "FAQ",
-        navTools: "Tools",
-        navResources: "Resources",
-        navContact: "Contact",
-        heroTitle: "Free, Secure, Encrypted Communication",
-        heroSubtitle: "We are building a digital space where your ideas and information are protected from censorship and remain completely confidential.",
-        heroCta: "Get Started Today!",
-        goalHeading: "Our Goal",
-        goalText: "To create a decentralized, encrypted platform where everyone can freely share and communicate — without censorship.",
-        featuresHeading: "Core Features",
-        feature1Title: "End-to-End Encryption",
-        feature1Text: "Your messages and files are secured from sender to receiver. Only you and the recipient have access to the decrypted information.",
-        feature2Title: "Decentralized Network",
-        feature2Text: "There's no central control, ensuring censorship resistance and continuous service availability.",
-        feature3Title: "Anonymity",
-        feature3Text: "We prioritize your privacy. No personal data collection or surveillance.",
-        feature4Title: "Open Source",
-        feature4Text: "Our platform is open source, allowing the community to verify security and contribute to its development.",
-        learnMoreButton: "Learn More",
-        learnMoreSrOnly: "Learn more about our goal",
-        faqHeading: "Frequently Asked Questions",
-        faq1Q: "What is decentralization?",
-        faq1A: "Decentralization means there is no central server or authority controlling the data. Information is distributed among multiple participants, increasing security and resilience against censorship.",
-        faq2Q: "How is communication encrypted?",
-        faq2A: "We use end-to-end encryption, which means your messages and data are encrypted from sender to receiver. Only you and the recipient have access to the decrypted information.",
-        faq3Q: "What are the advantages of NewGeoPlatform?",
-        faq3A: "Our platform ensures complete confidentiality, security, and censorship-free communication. There is no intermediary tracking or storing your data.",
-        toolsHeading: "Tools",
-        toolsText: "Use our tools for secure communication:",
-        tool1: "Encrypted Chat",
-        tool2: "Secure File Sharing",
-        tool3: "Anonymous Browse",
-        resourcesHeading: "Resources",
-        resourcesText: "Find more information about decentralized technologies:",
-        resource1: "Blog",
-        resource2: "Documentation",
-        resource3: "FAQ",
-        contactHeading: "Contact",
-        contactText: "Contact us for any questions:",
-        contactEmail: "Email:",
-        contactSocial: "Social Media:",
-        modalTitle: "Our Goal: In Detail",
-        modalDescription1: "Our mission is to create a digital space where communication and information exchange are completely free and protected from any interference. NewGeoPlatform utilizes advanced cryptographic technologies and decentralized architecture to ensure the confidentiality and security of your data. We believe everyone has the right to express their thoughts without censorship, surveillance, or restrictions. Our platform is designed to foster open dialogue and knowledge sharing in a safe and reliable environment.",
-        modalDescription2: "Our vision includes building a global network that connects users without borders or barriers, empowering them to fully control their digital presence.",
-        footerText: "© 2025 NewGeoPlatform | Free, Open, and Independent Space",
-        closeModalAriaLabel: "Close"
-      },
-      de: {
-        siteTitle: "NewGeoPlatform",
-        navGoal: "Unser Ziel",
-        navFeatures: "Funktionen",
-        navFaq: "FAQ",
-        navTools: "Werkzeuge",
-        navResources: "Ressourcen",
-        navContact: "Kontakt",
-        heroTitle: "Freie, sichere, verschlüsselte Kommunikation",
-        heroSubtitle: "Wir schaffen einen digitalen Raum, in dem Ihre Ideen und Informationen vor Zensur geschützt und absolut vertraulich sind.",
-        heroCta: "Jetzt starten!",
-        goalHeading: "Unser Ziel",
-        goalText: "Eine dezentrale, verschlüsselte Plattform schaffen, auf der jeder frei kommunizieren und teilen kann — ohne Zensur.",
-        featuresHeading: "Kernfunktionen",
-        feature1Title: "Ende-zu-Ende-Verschlüsselung",
-        feature1Text: "Ihre Nachrichten und Dateien sind vom Absender bis zum Empfänger geschützt. Nur Sie und der Empfänger haben Zugriff auf die entschlüsselten Informationen.",
-        feature2Title: "Dezentrales Netzwerk",
-        feature2Text: "Es gibt keine zentrale Kontrolle, was Zensurresistenz und kontinuierliche Serviceverfügbarkeit gewährleistet.",
-        feature3Title: "Anonymität",
-        feature3Text: "Wir priorisieren Ihre Privatsphäre. Keine Sammlung oder Überwachung persönlicher Daten.",
-        feature4Title: "Open Source",
-        feature4Text: "Unsere Plattform ist Open Source, was der Gemeinschaft ermöglicht, die Sicherheit zu überprüfen und zur Entwicklung beizutragen.",
-        learnMoreButton: "Mehr erfahren",
-        learnMoreSrOnly: "Mehr über unser Ziel erfahren",
-        faqHeading: "Häufig gestellte Fragen",
-        faq1Q: "Was ist Dezentralisierung?",
-        faq1A: "Dezentralisierung bedeutet, dass es keinen zentralen Server oder keine zentrale Behörde gibt, die die Daten kontrolliert. Informationen werden auf mehrere Teilnehmer verteilt, was die Sicherheit und Widerstandsfähigkeit gegen Zensur erhöht.",
-        faq2Q: "Wie wird die Kommunikation verschlüsselt?",
-        faq2A: "Wir verwenden Ende-zu-Ende-Verschlüsselung, was bedeutet, dass Ihre Nachrichten und Daten vom Absender zum Empfänger verschlüsselt werden. Nur Sie und der Empfänger haben Zugriff auf die entschlüsselten Informationen.",
-        faq3Q: "Was sind die Vorteile von NewGeoPlatform?",
-        faq3A: "Unsere Plattform gewährleistet vollständige Vertraulichkeit, Sicherheit und zensurfreie Kommunikation. Es gibt keinen Vermittler, der Ihre Daten verfolgt oder speichert.",
-        toolsHeading: "Werkzeuge",
-        toolsText: "Nutzen Sie unsere Werkzeuge für sichere Kommunikation:",
-        tool1: "Verschlüsselter Chat",
-        tool2: "Sichere Dateifreigabe",
-        tool3: "Anonymes Surfen",
-        resourcesHeading: "Ressourcen",
-        resourcesText: "Weitere Informationen zu dezentralen Technologien finden Sie hier:",
-        resource1: "Blog",
-        resource2: "Dokumentation",
-        resource3: "FAQ",
-        contactHeading: "Kontakt",
-        contactText: "Kontaktieren Sie uns bei Fragen:",
-        contactEmail: "E-Mail:",
-        contactSocial: "Soziale Medien:",
-        modalTitle: "Unser Ziel: Im Detail",
-        modalDescription1: "Unsere Mission ist es, einen digitalen Raum zu schaffen, in dem Kommunikation und Informationsaustausch völlig frei und vor jeglicher Einmischung geschützt sind. NewGeoPlatform nutzt fortschrittliche kryptografische Technologien und dezentrale Architektur, um die Vertraulichkeit und Sicherheit Ihrer Daten zu gewährleisten. Wir glauben, dass jeder das Recht hat, seine Gedanken ohne Zensur, Überwachung oder Einschränkungen auszudrücken. Unsere Plattform wurde entwickelt, um einen offenen Dialog und den Wissensaustausch in einer sicheren und zuverlässigen Umgebung zu fördern.",
-        modalDescription2: "Unsere Vision umfasst den Aufbau eines globalen Netzwerks, das Benutzer grenzenlos verbindet und ihnen die Möglichkeit gibt, ihre digitale Präsenz vollständig zu kontrollieren.",
-        footerText: "© 2025 NewGeoPlatform | Kostenloser, offener und unabhängiger Raum",
-        closeModalAriaLabel: "Schließen"
-      },
-      ja: {
-        siteTitle: "NewGeoPlatform",
-        navGoal: "私たちの目標",
-        navFeatures: "機能",
-        navFaq: "よくある質問",
-        navTools: "ツール",
-        navResources: "リソース",
-        navContact: "お問い合わせ",
-        heroTitle: "自由で安全な暗号化された通信",
-        heroSubtitle: "私たちは、あなたのアイデアと情報が検閲から保護され、完全に機密性を保たれたデジタル空間を構築しています。",
-        heroCta: "今すぐ始める！",
-        goalHeading: "私たちの目標",
-        goalText: "誰もが自由に共有し、検閲なしにコミュニケーションできる分散型で暗号化されたプラットフォームを作成すること。",
-        featuresHeading: "主要機能",
-        feature1Title: "エンドツーエンド暗号化",
-        feature1Text: "あなたのメッセージとファイルは送信者から受信者まで保護されます。あなたと受信者だけが復号化された情報にアクセスできます。",
-        feature2Title: "分散型ネットワーク",
-        feature2Text: "中央管理がないため、検閲への耐性と継続的なサービス利用可能性が保証されます。",
-        feature3Title: "匿名性",
-        feature3Text: "私たちはあなたのプライバシーを最優先します。個人情報の収集や監視は行いません。",
-        feature4Title: "オープンソース",
-        feature4Text: "当社のプラットフォームはオープンソースであり、コミュニティがセキュリティを確認し、その開発に貢献することができます。",
-        learnMoreButton: "もっと詳しく",
-        learnMoreSrOnly: "私たちの目標についてもっと詳しく知る",
-        faqHeading: "よくある質問",
-        faq1Q: "分散化とは何ですか？",
-        faq1A: "分散化とは、データを管理する中央サーバーや機関が存在しないことを意味します。情報は複数の参加者に分散され、セキュリティと検閲に対する耐性が向上します。",
-        faq2Q: "通信はどのように暗号化されますか？",
-        faq2A: "私たちはエンドツーエンド暗号化を使用しています。これは、あなたのメッセージとデータが送信者から受信者まで暗号化されることを意味します。あなたと受信者だけが復号化された情報にアクセスできます。",
-        faq3Q: "NewGeoPlatformの利点は何ですか？",
-        faq3A: "当社のプラットフォームは、完全な機密性、セキュリティ、および検閲のない通信を保証します。あなたのデータを追跡または保存する仲介者は存在しません。",
-        toolsHeading: "ツール",
-        toolsText: "安全な通信のために当社のツールを使用してください：",
-        tool1: "暗号化チャット",
-        tool2: "安全なファイル共有",
-        tool3: "匿名ブラウジング",
-        resourcesHeading: "リソース",
-        resourcesText: "分散型テクノロジーに関する詳細情報を見つける：",
-        resource1: "ブログ",
-        resource2: "ドキュメンテーション",
-        resource3: "よくある質問",
-        contactHeading: "お問い合わせ",
-        contactText: "ご不明な点がございましたらお問い合わせください：",
-        contactEmail: "メールアドレス：",
-        contactSocial: "ソーシャルメディア：",
-        modalTitle: "私たちの目標：詳細",
-        modalDescription1: "私たちの使命は、コミュニケーションと情報交換が完全に自由で、いかなる干渉からも保護されるデジタル空間を創造することです。NewGeoPlatformは、高度な暗号技術と分散型アーキテクチャを利用して、データの機密性とセキュリティを確保します。私たちは、誰もが検閲、監視、制限なしに自分の考えを表現する権利があると信じています。私たちのプラットフォームは、安全で信頼できる環境でオープンな対話と知識共有を促進するように設計されています。",
-        modalDescription2: "私たちのビジョンには、国境や障壁なしにユーザーを接続し、デジタルプレゼンスを完全に制御できるようにするグローバルネットワークの構築が含まれます。",
-        footerText: "© 2025 NewGeoPlatform | 無料、オープン、独立した空間",
-        closeModalAriaLabel: "閉じる"
-      }
-    };
-
-    // --- Language Switcher Functionality ---
-    const languageButtons = document.querySelectorAll('.lang-button');
-    const htmlElement = document.querySelector('html');
-
-    function setLanguage(lang) {
-      // Update HTML lang attribute and direction
-      htmlElement.lang = lang;
-      htmlElement.dir = (lang === 'ja') ? 'ltr' : 'ltr'; // Japanese is typically LTR, but specify if needed
-
-      // Update all elements with a data-key attribute
-      document.querySelectorAll('[data-key]').forEach(element => {
-        const key = element.getAttribute('data-key');
-        if (translations[lang] && translations[lang][key]) {
-          element.textContent = translations[lang][key];
-          // Special handling for aria-label on close button
-          if (element.id === 'closeModalAriaLabel' && lang === 'en') { // Corrected ID to target aria-label
-            element.setAttribute('aria-label', translations[lang].closeModalAriaLabel);
-          }
-        }
-      });
-
-      // Update the title dynamically
-      document.title = translations[lang].siteTitle + " - " + translations[lang].navGoal;
-
-      // Update active button styling
-      languageButtons.forEach(button => {
-        if (button.dataset.lang === lang) {
-          button.classList.add('active');
-        } else {
-          button.classList.remove('active');
-        }
-      });
-
-      // Store preference in localStorage
-      localStorage.setItem('preferredLanguage', lang);
-    }
-
-    // Event listeners for language buttons
-    languageButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        setLanguage(button.dataset.lang);
-      });
-    });
-
-    // On page load, set the language from localStorage or default to Georgian
-    document.addEventListener('DOMContentLoaded', () => {
-      const storedLang = localStorage.getItem('preferredLanguage');
-      setLanguage(storedLang || 'ka'); // Default to Georgian
-    });
-
-
-    // --- Modal Functionality ---
-    const openGoalModalBtn = document.getElementById('openGoalModal');
-    const goalDetailsModal = document.getElementById('goalDetailsModal');
-    const closeButton = goalDetailsModal.querySelector('.close-button');
-
-    openGoalModalBtn.addEventListener('click', function(event) {
-      event.preventDefault(); // Prevent default link behavior
-      goalDetailsModal.style.display = 'block';
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-      closeButton.focus(); // Focus on the close button when modal opens for accessibility
-    });
-
-    closeButton.addEventListener('click', function() {
-      goalDetailsModal.style.display = 'none';
-      document.body.style.overflow = ''; // Restore scrolling
-      openGoalModalBtn.focus(); // Return focus to the button that opened the modal
-    });
-
-    // Close modal when clicking outside of it
-    window.addEventListener('click', function(event) {
-      if (event.target == goalDetailsModal) {
-        goalDetailsModal.style.display = 'none';
-        document.body.style.overflow = '';
-        openGoalModalBtn.focus();
-      }
-    });
-
-    // Close modal when Escape key is pressed
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape' && goalDetailsModal.style.display === 'block') {
-        goalDetailsModal.style.display = 'none';
-        document.body.style.overflow = '';
-        openGoalModalBtn.focus();
-      }
-    });
-
-    // --- Accordion Functionality ---
-    document.querySelectorAll('.accordion-header').forEach(button => {
-      button.addEventListener('click', () => {
-        const accordionItem = button.closest('.accordion-item');
-        const accordionPanel = accordionItem.querySelector('.accordion-panel');
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-
-        // Close all other open panels in the same accordion group
-        document.querySelectorAll('.accordion-panel').forEach(panel => {
-          if (panel !== accordionPanel && !panel.hidden) {
-            panel.hidden = true;
-            panel.previousElementSibling.setAttribute('aria-expanded', 'false');
-            panel.previousElementSibling.querySelector('.icon').textContent = '▼';
-          }
-        });
-
-        // Toggle the clicked panel
-        button.setAttribute('aria-expanded', !isExpanded);
-        accordionPanel.hidden = isExpanded;
-        button.querySelector('.icon').textContent = isExpanded ? '▼' : '▲'; // Change icon
-      });
-    });
-  </script>
+    <script>
+        // Update current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
