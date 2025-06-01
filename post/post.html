@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Blog Post - Your Blog</title>
+    <link rel="stylesheet" href="../style.css"> <style>
+        /* Additional styles for single post page if needed */
+        .post-content {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .post-content h1 {
+            color: var(--primary-color);
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .post-content .post-meta {
+            text-align: center;
+            color: var(--light-text-color);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px dashed var(--light-text-color);
+            padding-bottom: 1rem;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+        }
+        .back-to-blog {
+            display: inline-block;
+            margin-top: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .back-to-blog:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="site-title"><a href="/">Your Name</a></h1>
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="/#about">About Me</a></li>
+                    <li><a href="/#skills">Skills</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="post-content">
+            <h1>My First Blog Post</h1>
+            <p class="post-meta">Published on June 1, 2025 by Your Name</p>
+
+            <img src="https://via.placeholder.com/800x450/3498db/ffffff?text=Blog+Post+Hero+Image" alt="Hero image for the post">
+
+            <p>Welcome to my brand new blog! I'm excited to start sharing my thoughts, experiences, and learnings here.</p>
+
+            <p>For my first post, I wanted to give a quick overview of what you can expect from this space. I'll be focusing on [mention your main blog topics, e.g., web development tutorials, personal projects, book reviews, industry insights].</p>
+
+            <h3>Why start a blog?</h3>
+            <p>I believe in the power of sharing knowledge and documenting the journey. This blog will serve as a platform for me to:</p>
+            <ul>
+                <li>Reinforce my own understanding of complex topics.</li>
+                <li>Share insights that might help others facing similar challenges.</li>
+                <li>Connect with a wider community of like-minded individuals.</li>
+            </ul>
+
+            <img src="https://via.placeholder.com/600x350/2c3e50/ffffff?text=Another+Relevant+Image" alt="Another image in the post">
+
+            <p>Stay tuned for more regular updates. Your feedback and engagement are highly appreciated!</p>
+
+            <p>Thanks for stopping by,</p>
+            <p>Your Name</p>
+
+            <a href="../blog.html" class="back-to-blog">&larr; Back to all posts</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year-post"></span> Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year-post').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
